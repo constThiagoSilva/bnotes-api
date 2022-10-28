@@ -3,7 +3,7 @@ import { ThrowSaveNotesError } from "../../helpers/errors/saveNotesUseCaseError/
 import { Note } from "../../models/Note";
 import { NewNote } from "./interfaces/iNewNote";
 import { ISaveNotesUseCase } from "./interfaces/usecases/ISaveNotesUseCase";
-import { SaveNotesRepository } from "./repository/interfaces/SaveNotesRepository";
+import { SaveNotesRepository } from "./mocks/repository/interfaces/SaveNotesRepository";
 
 export class SaveNotesUseCase implements ISaveNotesUseCase {
   constructor(private saveNotesRepository: SaveNotesRepository) {}

@@ -1,5 +1,5 @@
-import { Note } from "../../../models/Note";
-import { NewNote } from "../interfaces/iNewNote";
+import { Note } from "../../../../models/Note";
+import { NewNote } from "../../interfaces/iNewNote";
 import { SaveNotesRepository } from "./interfaces/SaveNotesRepository";
 
 export class SaveNotesRepositorySpy implements SaveNotesRepository {

@@ -1,5 +1,5 @@
 import { NewNote } from "./interfaces/iNewNote";
-import { SaveNotesRepositorySpy } from "./repository/SaveNotesRepositorySpy";
+import { SaveNotesRepositorySpy } from "./mocks/repository/SaveNotesRepositorySpy";
 import { SaveNotesUseCase } from "./SaveNotesUseCase";
 
 const makeSut = () => {
