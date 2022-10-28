@@ -2,30 +2,29 @@ class SaveNotesUseCase implements ISaveNotesUseCase{
     constructor(private saveNotesRepository: SaveNotesRepository) {}
 
     async save(newNote: NewNote) { 
-        const savedNote = this.saveNotesRepository.save(newNote)
-
-        return savedNote
+        await this.saveNotesRepository.save(newNote)
     }
 }
 class SaveNotesRepositorySpy implements SaveNotesRepository {
-    async save(newNote: NewNote): Promise<Note> {
-        return {
+    private note: Note | null = null;
+
+    async save(newNote: NewNote): Promise<void> {
+        this.note = {
             author: newNote.author,
             title: newNote.title,
             content: newNote.content,
-            createAt: new Date(),
-
+            createAt: new Date()
         }
     }
 }
 
 
 interface ISaveNotesUseCase {
-    save(newNote: NewNote): Promise<Note>
+    save(newNote: NewNote): Promise<void>
 }
 
 interface SaveNotesRepository {
-    save(newNote: NewNote): Promise<Note>
+    save(newNote: NewNote): Promise<void>
 }
 
 interface Note {
@@ -50,15 +49,15 @@ const makeSut = () => {
 
 describe('Save Notes Use Case', () => {
     it('should save a new note', async () => {
-        const {sut} = makeSut()
+        const {sut, saveNotesRepository} = makeSut()
         const aNewNote: NewNote = {
             author: 'any_author',
             title: 'any_title',
             content: 'any_content',
         }
 
-        const aSavedNewNote = await sut.save(aNewNote)
+        await sut.save(aNewNote)
 
-        expect(aSavedNewNote.content).toBe(aNewNote.content)
+        expect(saveNotesRepository.note).not.toBe(null)
     })
 })
