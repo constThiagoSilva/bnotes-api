@@ -16,6 +16,10 @@ class SaveNotesRepositorySpy implements SaveNotesRepository {
             createAt: new Date()
         }
     }
+
+    getNote() {
+        return this.note
+    }
 }
 
 
@@ -58,6 +62,6 @@ describe('Save Notes Use Case', () => {
 
         await sut.save(aNewNote)
 
-        expect(saveNotesRepository.note).not.toBe(null)
+        expect(saveNotesRepository.getNote).not.toBe(null)
     })
 })
