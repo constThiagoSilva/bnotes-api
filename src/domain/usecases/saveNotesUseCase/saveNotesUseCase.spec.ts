@@ -1,10 +1,24 @@
 class SaveNotesUseCase implements ISaveNotesUseCase{
     async save(newNote: string) {
-        throw new Error('not implmented')
+        const saveNotesRepository = new SaveNotesRepositorySpy()
+
+        const savedNote = saveNotesRepository.save(newNote)
+
+        return savedNote
+    }
+}
+class SaveNotesRepositorySpy implements SaveNotesRepository {
+    save(newNote: string): Promise<Note> {
+        throw new Error("Method not implemented.")
     }
 }
 
+
 interface ISaveNotesUseCase {
+    save(newNote: string): Promise<Note>
+}
+
+interface SaveNotesRepository {
     save(newNote: string): Promise<Note>
 }
 
