@@ -1,32 +1,36 @@
 class SaveNotesUseCase implements ISaveNotesUseCase {
   constructor(private saveNotesRepository: SaveNotesRepository) {}
 
-  async save(newNote: NewNote): Promise<{ ok?: string; error?: IError }> {
+  async save(newNote: NewNote): Promise<{ note: Note | null; error?: IError }> {
     const isThrowSaveNotesError = ThrowSaveNotesError(newNote);
 
     if (isThrowSaveNotesError) {
       return {
         error: isThrowSaveNotesError,
+        note: null,
       };
     }
 
-    await this.saveNotesRepository.save(newNote);
+    const note = await this.saveNotesRepository.save(newNote);
 
     return {
-      ok: "ok",
+      note: note,
     };
   }
 }
 class SaveNotesRepositorySpy implements SaveNotesRepository {
   private note: Note | null = null;
 
-  async save(newNote: NewNote): Promise<void> {
+  async save(newNoteParameter: NewNote): Promise<Note | null> {
     this.note = {
-      author: newNote.author,
-      title: newNote.title,
-      content: newNote.content,
+      author: newNoteParameter.author,
+      title: newNoteParameter.title,
+      content: newNoteParameter.content,
       createAt: new Date(),
     };
+    const newNote = this.getNote();
+
+    return newNote;
   }
 
   getNote() {
@@ -62,11 +66,11 @@ class ProvidedParamsError extends Error {
 }
 
 interface ISaveNotesUseCase {
-  save(newNote: NewNote): Promise<{ ok?: string; error?: IError }>;
+  save(newNote: NewNote): Promise<{ note: Note | null; error?: IError }>;
 }
 
 interface SaveNotesRepository {
-  save(newNote: NewNote): Promise<void>;
+  save(newNote: NewNote): Promise<Note | null>;
 }
 
 interface Note {
@@ -110,6 +114,20 @@ describe("Save Notes Use Case", () => {
     await sut.save(aNewNote);
 
     expect(saveNotesRepository.getNote).not.toBe(null);
+  });
+  it("should return a note with same properties of parameters", async () => {
+    const { sut, saveNotesRepository } = makeSut();
+    const aNewNote: NewNote = {
+      author: "any_author",
+      title: "any_title",
+      content: "any_content",
+    };
+
+    const { note } = await sut.save(aNewNote);
+
+    expect(note?.author).toBe(aNewNote.author);
+    expect(note?.title).toBe(aNewNote.title);
+    expect(note?.content).toBe(aNewNote.content);
   });
 
   it("should return 500 if author require parameter is not provided", async () => {
