@@ -1,3 +1,5 @@
+[x] save notes with no validation
+
 [] save note if note is provided with correctly parameters: {
     author: string,
     title: string | '',
