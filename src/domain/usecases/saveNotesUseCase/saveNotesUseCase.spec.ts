@@ -3,13 +3,15 @@ import { SaveNotesRepositorySpy } from "./mocks/repository/SaveNotesRepositorySp
 import { SaveNotesUseCase } from "./SaveNotesUseCase";
 
 const makeSut = () => {
-  const saveNotesRepository = new SaveNotesRepositorySpy();
+  const saveNotesRepository = new SaveNotesRepositorySpy()
   const sut = new SaveNotesUseCase(saveNotesRepository);
 
   return { sut, saveNotesRepository };
 };
 
 describe("Save Notes Use Case", () => {
+
+  //UNIT
   it("should save a new note", async () => {
     const { sut, saveNotesRepository } = makeSut();
     const aNewNote: NewNote = {
@@ -23,7 +25,7 @@ describe("Save Notes Use Case", () => {
     expect(saveNotesRepository.getNote).not.toBe(null);
   });
   it("should return a note with same properties of parameters", async () => {
-    const { sut, saveNotesRepository } = makeSut();
+    const { sut } = makeSut();
     const aNewNote: NewNote = {
       author: "any_author",
       title: "any_title",

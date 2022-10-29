@@ -3,5 +3,5 @@ import { Note } from "../../../../models/Note";
 import { NewNote } from "../iNewNote";
 
 export interface ISaveNotesUseCase {
-  save(newNote: NewNote): Promise<{ note: Note | null; error?: IError }>;
+  save(newNote: NewNote): Promise<{ note: Note | null; error: IError | null}>;
 }

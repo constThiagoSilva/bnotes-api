@@ -8,7 +8,7 @@ import { SaveNotesRepository } from "./mocks/repository/interfaces/SaveNotesRepo
 export class SaveNotesUseCase implements ISaveNotesUseCase {
   constructor(private saveNotesRepository: SaveNotesRepository) {}
 
-  async save(newNote: NewNote): Promise<{ note: Note | null; error?: IError }> {
+  async save(newNote: NewNote): Promise<{ note: Note | null; error: IError |  null}> {
     const isThrowSaveNotesError = ThrowSaveNotesError(newNote);
 
     if (isThrowSaveNotesError) {
@@ -17,11 +17,11 @@ export class SaveNotesUseCase implements ISaveNotesUseCase {
         note: null,
       };
     }
-
-    const note = await this.saveNotesRepository.save(newNote);
+    const {note} = await this.saveNotesRepository.save(newNote);
 
     return {
       note: note,
+      error: null
     };
   }
 }
