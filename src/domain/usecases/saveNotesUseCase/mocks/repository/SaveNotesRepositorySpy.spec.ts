@@ -79,9 +79,13 @@ describe('Save Notes Repository Spy',() => {
             updateAt: null,
             createAt: new Date()
         }
-
+        
         const {note} = await sut.save(MOCK_NOTE)
+        
 
-        expect(note).toEqual(MOCK_NEW_NOTE)
+        expect(note?.id).toBe(MOCK_NEW_NOTE.id)
+        expect(note?.author).toBe(MOCK_NEW_NOTE.author)
+        expect(note?.title).toBe(MOCK_NEW_NOTE.title)
+        expect(note?.content).toBe(MOCK_NEW_NOTE.content)
     })
 })
