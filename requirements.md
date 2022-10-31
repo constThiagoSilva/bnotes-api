@@ -1,6 +1,6 @@
 ## Main Requirements
 
-# add note
+# add note check
 
 # delete note
 
