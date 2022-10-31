@@ -11,6 +11,7 @@ export class SaveNotesUseCase implements ISaveNotesUseCase {
 
   async save(
     newNote: NewNote,
+    id?: string
   ): Promise<{ note: Note | null; error: IError | null }> {
     const isThrowSaveNotesError = ThrowSaveNotesError(newNote);
 
@@ -22,7 +23,7 @@ export class SaveNotesUseCase implements ISaveNotesUseCase {
     }
 
     if (this.saveNotesRepository.getNote()) {
-      const note = await this.updateNotesRepository.update({
+      const note = await this.updateNotesRepository.update(id as string, {
         author: newNote.author,
         title: newNote.title,
         content: newNote.content,

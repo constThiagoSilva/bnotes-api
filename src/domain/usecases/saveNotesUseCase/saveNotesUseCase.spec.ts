@@ -52,17 +52,21 @@ describe("Save Notes Use Case", () => {
 
     await sut.save(aNewNote);
 
-    const aUpdatedNote: UpdateNote = {
-      author: 'same_author',
-      title: 'updated_title',
-      content: 'updated_content',
+    const aUpdatedNote: {note: UpdateNote, id: string} = {
+      id: '1',
+      note: {
+
+        author: 'same_author',
+        title: 'updated_title',
+        content: 'updated_content',
+      },
     }
 
-    const {note} = await sut.save(aUpdatedNote);
+    const {note} = await sut.save(aUpdatedNote.note, aUpdatedNote.id);
 
-    expect(note?.author).toBe(aUpdatedNote.author)    
-    expect(note?.title).toBe(aUpdatedNote.title)
-    expect(note?.content).toBe(aUpdatedNote.content)
+    expect(note?.author).toBe(aUpdatedNote.note.author)    
+    expect(note?.title).toBe(aUpdatedNote.note.title)
+    expect(note?.content).toBe(aUpdatedNote.note.content)
   })
 
   it("should return 500 if author require parameter is not provided", async () => {

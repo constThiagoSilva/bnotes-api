@@ -5,7 +5,7 @@ import { UpdateNotesRepository } from "../interfaces/UpdateNotesRepository";
 export class UpdateNotesRepositorySpy implements UpdateNotesRepository {
   private note: Note | null = null;
 
-  async update(updatedNote: UpdateNote): Promise<Note | null> {
+  async update(id: string, updatedNote: UpdateNote): Promise<Note | null> {
     this.note = {
       id: "1",
       author: "same_author",
