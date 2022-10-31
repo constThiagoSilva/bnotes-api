@@ -11,8 +11,27 @@ interface GetAllNotesRepository {
 }
 
 class GetAllNotesRepositorySpy implements GetAllNotesRepository{
-    getAll(author: string): Promise<Note[]> {
-        throw new Error("Method not implemented.");
+    async getAll(author: string): Promise<Note[]> {
+        const MOCK_AUTHOR_NOTES: Note[] = [
+            {
+              author: "any_author",
+              id: "1",
+              title: "any_title",
+              content: "any_content",
+              createAt: new Date("2022-10-31"),
+              updateAt: new Date("2022-10-31"),
+            },
+            {
+              author: "any_author",
+              id: "2",
+              title: "any_title",
+              content: "any_content",
+              createAt: new Date("2022-10-31"),
+              updateAt: new Date("2022-10-31"),
+            },
+          ];
+
+        return MOCK_AUTHOR_NOTES
     }
 }
 
@@ -74,6 +93,14 @@ describe("Get All Notes Use Case", () => {
     const {notes} = await sut.getAll(author)
 
     expect(notes).toEqual(MOCK_AUTHOR_NOTES)
+  });
+  it("should return the message: no notes yet, if the author no have notes", async () => {
+    const {sut} = makeSut();
+    const author = 'any_author'
+
+    const {message} = await sut.getAll(author)
+
+    expect(message).toEqual('no notes yet')
   });
 
   it("should return an 500 error if author not provided", async () => {

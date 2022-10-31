@@ -1,4 +1,4 @@
-[] get all notes of a one author
+[x] get all notes of a one author
 
 [] return the message: no notes yet, if the author no have notes
 
