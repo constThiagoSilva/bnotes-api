@@ -12,3 +12,4 @@
     createAt: Date
 }
 [x] return error 500 if not these parameter are not provided
+[] if exists a note, just update
