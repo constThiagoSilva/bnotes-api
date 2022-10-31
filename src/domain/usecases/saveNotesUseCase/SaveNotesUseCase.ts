@@ -4,12 +4,16 @@ import { Note } from "../../models/Note";
 import { NewNote } from "./interfaces/iNewNote";
 import { ISaveNotesUseCase } from "./interfaces/usecases/ISaveNotesUseCase";
 import { SaveNotesRepository } from "./mocks/repository/interfaces/SaveNotesRepository";
+import { UpdateNote, UpdateNotesRepository } from "./saveNotesUseCase.spec";
 
 export class SaveNotesUseCase implements ISaveNotesUseCase {
-  constructor(private saveNotesRepository: SaveNotesRepository) {}
+  constructor(private saveNotesRepository: SaveNotesRepository, private updateNotesRepository: UpdateNotesRepository) {}
 
-  async save(newNote: NewNote): Promise<{ note: Note | null; error: IError |  null}> {
-    const isThrowSaveNotesError = ThrowSaveNotesError(newNote);
+  async save(
+    newNote?: NewNote,
+    updatedNote?: UpdateNote
+  ): Promise<{ note: Note | null; error: IError | null }> {
+    const isThrowSaveNotesError = ThrowSaveNotesError(newNote as NewNote);
 
     if (isThrowSaveNotesError) {
       return {
@@ -17,11 +21,21 @@ export class SaveNotesUseCase implements ISaveNotesUseCase {
         note: null,
       };
     }
-    const {note} = await this.saveNotesRepository.save(newNote);
+
+    if (this.saveNotesRepository.getNote()) {
+      const { note } = await this.updateNotesRepository.update(updatedNote as UpdateNote);
+
+      return {
+        note: note,
+        error: null,
+      };
+    }
+
+    const { note } = await this.saveNotesRepository.save(newNote as NewNote);
 
     return {
       note: note,
-      error: null
+      error: null,
     };
   }
 }

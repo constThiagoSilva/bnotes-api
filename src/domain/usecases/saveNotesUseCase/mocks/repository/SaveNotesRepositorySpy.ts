@@ -53,7 +53,7 @@ export class SaveNotesRepositorySpy implements SaveNotesRepository {
     return {note: newNote, error: null};
   }
 
-  getNote() {
+  public getNote() {
     return this.note;
   }
 }

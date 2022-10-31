@@ -3,7 +3,7 @@ import { NewNote } from "./interfaces/iNewNote";
 import { SaveNotesRepositorySpy } from "./mocks/repository/SaveNotesRepositorySpy";
 import { SaveNotesUseCase } from "./SaveNotesUseCase";
 
-interface UpdateNote {
+export interface UpdateNote {
   id: string;
   title: string;
   content: string;
@@ -23,7 +23,8 @@ export class UpdateNotesRepositorySpy implements UpdateNotesRepository {
 
 const makeSut = () => {
   const saveNotesRepository = new SaveNotesRepositorySpy()
-  const sut = new SaveNotesUseCase(saveNotesRepository);
+  const updateNotesRepository = new UpdateNotesRepositorySpy()
+  const sut = new SaveNotesUseCase(saveNotesRepository, updateNotesRepository);
 
   return { sut, saveNotesRepository };
 };
