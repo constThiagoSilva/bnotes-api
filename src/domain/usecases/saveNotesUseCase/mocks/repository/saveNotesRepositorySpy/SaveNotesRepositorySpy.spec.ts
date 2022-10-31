@@ -61,7 +61,11 @@ describe('Save Notes Repository Spy',() => {
 
         await sut.save(MOCK_NOTE)
 
-        expect(sut.getNote()).toEqual(MOCK_NEW_NOTE)
+        
+        expect(sut.getNote()?.id).toBe(MOCK_NEW_NOTE.id)
+        expect(sut.getNote()?.author).toBe(MOCK_NEW_NOTE.author)
+        expect(sut.getNote()?.title).toBe(MOCK_NEW_NOTE.title)
+        expect(sut.getNote()?.content).toBe(MOCK_NEW_NOTE.content)
     })
     it('should return a note with passed in parameters', async () => {
         const sut = new SaveNotesRepositorySpy()

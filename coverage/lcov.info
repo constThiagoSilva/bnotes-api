@@ -243,7 +243,7 @@ FNH:4
 FNDA:8,ThrowSaveNotesRepositorySpy
 FNDA:11,SaveNotesRepositorySpy
 FNDA:8,save
-FNDA:10,getNote
+FNDA:13,getNote
 DA:1,1
 DA:2,1
 DA:3,1
@@ -300,8 +300,8 @@ DA:53,5
 DA:54,5
 DA:55,11
 DA:56,11
-DA:57,10
-DA:58,10
+DA:57,13
+DA:58,13
 DA:59,11
 LF:59
 LH:59
@@ -319,7 +319,7 @@ BRDA:27,10,0,11
 BRDA:30,11,0,8
 BRDA:33,12,0,3
 BRDA:42,13,0,5
-BRDA:56,14,0,10
+BRDA:56,14,0,13
 BRF:15
 BRH:12
 end_of_record
