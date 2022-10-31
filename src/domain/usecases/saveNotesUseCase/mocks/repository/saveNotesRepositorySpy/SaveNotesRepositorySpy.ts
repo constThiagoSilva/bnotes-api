@@ -1,7 +1,7 @@
-import { IError } from "../../../../helpers/errors/saveNotesUseCaseError/interfaces/IError";
-import { Note } from "../../../../models/Note";
-import { NewNote } from "../../interfaces/iNewNote";
-import { SaveNotesRepository } from "./interfaces/SaveNotesRepository";
+import { IError } from "../../../../../helpers/errors/saveNotesUseCaseError/interfaces/IError";
+import { Note } from "../../../../../models/Note";
+import { NewNote } from "../../../interfaces/iNewNote";
+import { SaveNotesRepository } from "../interfaces/SaveNotesRepository";
 
 const ThrowSaveNotesRepositorySpy = (newNoteParameter: NewNote): IError| null => {
   if (!newNoteParameter?.author) {

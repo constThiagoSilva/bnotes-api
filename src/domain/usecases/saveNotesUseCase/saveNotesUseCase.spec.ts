@@ -1,38 +1,8 @@
-import { Note } from "../../models/Note";
 import { NewNote } from "./interfaces/iNewNote";
-import { SaveNotesRepositorySpy } from "./mocks/repository/SaveNotesRepositorySpy";
+import { UpdateNote } from "./interfaces/IUpdateNote";
+import { SaveNotesRepositorySpy } from "./mocks/repository/saveNotesRepositorySpy/SaveNotesRepositorySpy";
+import { UpdateNotesRepositorySpy } from "./mocks/repository/updateNotesRepositorySpy/UpdateNotesRepositorySpy";
 import { SaveNotesUseCase } from "./SaveNotesUseCase";
-
-export interface UpdateNote {
-  author: string;
-  title: string;
-  content: string;
-}
-
-export interface UpdateNotesRepository {
-  update(updatedNote: UpdateNote): Promise<Note | null>
-}
-
-export class UpdateNotesRepositorySpy implements UpdateNotesRepository {
-  private note: Note | null = null;
-
-  async update(updatedNote: UpdateNote): Promise<Note | null> {
-    this.note = {
-      id: '1',
-      author: 'same_author',
-      title: updatedNote.title,
-      content: updatedNote.content,
-      updateAt: new Date(),
-      createAt: new Date(),
-    };
-    const newNote = this.getNote();
-
-    return newNote;
-  }
-  public getNote() {
-    return this.note
-  }
-}
 
 
 const makeSut = () => {

@@ -4,7 +4,7 @@ import { Note } from "../../models/Note";
 import { NewNote } from "./interfaces/iNewNote";
 import { ISaveNotesUseCase } from "./interfaces/usecases/ISaveNotesUseCase";
 import { SaveNotesRepository } from "./mocks/repository/interfaces/SaveNotesRepository";
-import { UpdateNote, UpdateNotesRepository } from "./saveNotesUseCase.spec";
+import { UpdateNotesRepository } from "./mocks/repository/interfaces/UpdateNotesRepository";
 
 export class SaveNotesUseCase implements ISaveNotesUseCase {
   constructor(private saveNotesRepository: SaveNotesRepository, private updateNotesRepository: UpdateNotesRepository) {}

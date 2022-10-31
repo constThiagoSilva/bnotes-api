@@ -1,5 +1,5 @@
-import { Note } from "../../../../models/Note"
-import { NewNote } from "../../interfaces/iNewNote"
+import { Note } from "../../../../../models/Note"
+import { NewNote } from "../../../interfaces/iNewNote"
 import { SaveNotesRepositorySpy } from "./SaveNotesRepositorySpy"
 
 describe('Save Notes Repository Spy',() => {
