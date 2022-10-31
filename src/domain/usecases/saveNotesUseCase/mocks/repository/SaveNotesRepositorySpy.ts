@@ -41,9 +41,11 @@ export class SaveNotesRepositorySpy implements SaveNotesRepository {
     }
 
     this.note = {
+      id: '1',
       author: newNoteParameter.author,
       title: newNoteParameter.title,
       content: newNoteParameter.content,
+      updateAt: null,
       createAt: new Date(),
     };
     const newNote = this.getNote();
