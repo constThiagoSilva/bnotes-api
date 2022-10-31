@@ -2,6 +2,13 @@ import { NewNote } from "./interfaces/iNewNote";
 import { SaveNotesRepositorySpy } from "./mocks/repository/SaveNotesRepositorySpy";
 import { SaveNotesUseCase } from "./SaveNotesUseCase";
 
+interface UpdateNote {
+  id: string;
+  title: string;
+  content: string;
+  updateAt: Date;
+}
+
 const makeSut = () => {
   const saveNotesRepository = new SaveNotesRepositorySpy()
   const sut = new SaveNotesUseCase(saveNotesRepository);
@@ -38,6 +45,28 @@ describe("Save Notes Use Case", () => {
     expect(note?.title).toBe(aNewNote.title);
     expect(note?.content).toBe(aNewNote.content);
   });
+  it('should update a exist note', async () => {
+    const { sut } = makeSut();
+    const aNewNote: NewNote = {
+      author: "any_author",
+      title: "any_title",
+      content: "any_content",
+    };
+
+    await sut.save(aNewNote);
+
+    const aUpdatedNote: UpdateNote = {
+      id: '1',
+      title: 'updated_title',
+      content: 'updated_content',
+      updateAt: new Date()
+    }
+
+    const {note} = await sut.save(aNewNote);
+
+    expect(note?.title).toBe(aUpdatedNote.title)
+    expect(note?.content).toBe(aUpdatedNote.content)
+  })
 
   it("should return 500 if author require parameter is not provided", async () => {
     const { sut } = makeSut();
