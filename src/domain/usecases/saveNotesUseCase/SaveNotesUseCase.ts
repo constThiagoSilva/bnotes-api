@@ -10,10 +10,9 @@ export class SaveNotesUseCase implements ISaveNotesUseCase {
   constructor(private saveNotesRepository: SaveNotesRepository, private updateNotesRepository: UpdateNotesRepository) {}
 
   async save(
-    newNote?: NewNote,
-    updatedNote?: UpdateNote
+    newNote: NewNote,
   ): Promise<{ note: Note | null; error: IError | null }> {
-    const isThrowSaveNotesError = ThrowSaveNotesError(newNote as NewNote);
+    const isThrowSaveNotesError = ThrowSaveNotesError(newNote);
 
     if (isThrowSaveNotesError) {
       return {
@@ -23,7 +22,11 @@ export class SaveNotesUseCase implements ISaveNotesUseCase {
     }
 
     if (this.saveNotesRepository.getNote()) {
-      const { note } = await this.updateNotesRepository.update(updatedNote as UpdateNote);
+      const note = await this.updateNotesRepository.update({
+        author: newNote.author,
+        title: newNote.title,
+        content: newNote.content,
+      });
 
       return {
         note: note,
@@ -31,7 +34,7 @@ export class SaveNotesUseCase implements ISaveNotesUseCase {
       };
     }
 
-    const { note } = await this.saveNotesRepository.save(newNote as NewNote);
+    const { note } = await this.saveNotesRepository.save(newNote);
 
     return {
       note: note,

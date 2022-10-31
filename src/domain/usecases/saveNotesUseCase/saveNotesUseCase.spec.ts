@@ -4,19 +4,33 @@ import { SaveNotesRepositorySpy } from "./mocks/repository/SaveNotesRepositorySp
 import { SaveNotesUseCase } from "./SaveNotesUseCase";
 
 export interface UpdateNote {
-  id: string;
+  author: string;
   title: string;
   content: string;
-  updateAt: Date;
 }
 
 export interface UpdateNotesRepository {
-  update(updatedNote: UpdateNote): Promise<Note>
+  update(updatedNote: UpdateNote): Promise<Note | null>
 }
 
 export class UpdateNotesRepositorySpy implements UpdateNotesRepository {
-  update(updatedNote: UpdateNote): Promise<Note> {
-    throw new Error("Method not implemented.");
+  private note: Note | null = null;
+
+  async update(updatedNote: UpdateNote): Promise<Note | null> {
+    this.note = {
+      id: '1',
+      author: 'same_author',
+      title: updatedNote.title,
+      content: updatedNote.content,
+      updateAt: new Date(),
+      createAt: new Date(),
+    };
+    const newNote = this.getNote();
+
+    return newNote;
+  }
+  public getNote() {
+    return this.note
   }
 }
 
@@ -69,14 +83,14 @@ describe("Save Notes Use Case", () => {
     await sut.save(aNewNote);
 
     const aUpdatedNote: UpdateNote = {
-      id: '1',
+      author: 'same_author',
       title: 'updated_title',
       content: 'updated_content',
-      updateAt: new Date()
     }
 
-    const {note} = await sut.save(aNewNote);
+    const {note} = await sut.save(aUpdatedNote);
 
+    expect(note?.author).toBe(aUpdatedNote.author)    
     expect(note?.title).toBe(aUpdatedNote.title)
     expect(note?.content).toBe(aUpdatedNote.content)
   })
