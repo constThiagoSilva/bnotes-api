@@ -1,89 +1,10 @@
-import { IError } from "../../helpers/errors/saveNotesUseCaseError/interfaces/IError";
-import { ProvidedParamsError } from "../../helpers/errors/saveNotesUseCaseError/ProviedParamsError";
 import { Note } from "../../models/Note";
-
-interface IGetAllNotes {
-  getAll(
-    author: string
-  ): Promise<{ notes: Note[]; error: IError | null; message: string }>;
-}
-
-interface GetAllNotesRepository {
-  getAll(author: string): Promise<Note[] | null>;
-}
-
-class GetAllNotesRepositorySpy implements GetAllNotesRepository {
-  private notes: Note[] = [
-    {
-      author: "any_author",
-      id: "1",
-      title: "any_title",
-      content: "any_content",
-      createAt: new Date("2022-10-31"),
-      updateAt: new Date("2022-10-31"),
-    },
-    {
-      author: "any_author",
-      id: "2",
-      title: "any_title",
-      content: "any_content",
-      createAt: new Date("2022-10-31"),
-      updateAt: new Date("2022-10-31"),
-    },
-  ];
-  async getAll(author: string): Promise<Note[] | null> {
-    const isTheAuthorHaveNotes = this.notes.find(note => note.author === author)
-
-    if (!isTheAuthorHaveNotes) {
-        return null
-    }
-
-    const notes: Note[] = this.notes.filter(note => note.author === author)
-
-    
-
-    return notes;
-  }
-}
-
-class GetAllNotes implements IGetAllNotes {
-  constructor(private getAllNotesRepository: GetAllNotesRepository) {}
-
-  async getAll(
-    author: string
-  ): Promise<{ notes: Note[]; error: IError | null; message: string }> {
-    if (!author) {
-      return {
-        notes: [],
-        error: {
-          code: 500,
-          message: new ProvidedParamsError("author parameter not provided"),
-        },
-        message: "",
-      };
-    }
-
-    const notes = await this.getAllNotesRepository.getAll(author);
-
-    if (!notes) {
-      return {
-        notes: [],
-        error: null,
-        message: "no notes yet",
-      };
-    }
-
-    return {
-      notes: notes as Note[],
-      error: null,
-      message: "",
-    };
-  }
-}
+import { GetAllNotesUseCase } from "./GetAllNotesUseCase";
+import { GetAllNotesRepositorySpy } from "./mocks/GetAllNotesRepositorySpy/GetAllNotesRepositorySpy";
 
 const makeSut = () => {
   const getAllNotesRepository = new GetAllNotesRepositorySpy();
-  const sut = new GetAllNotes(getAllNotesRepository);
+  const sut = new GetAllNotesUseCase(getAllNotesRepository);
 
   return { sut, getAllNotesRepository };
 };
