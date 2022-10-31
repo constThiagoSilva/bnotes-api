@@ -6,7 +6,19 @@ interface IGetAllNotes {
   getAll(author: string): Promise<{ notes: Note[]; error: IError | null }>;
 }
 
+interface GetAllNotesRepository {
+    getAll(author: string): Promise<Note[]>
+}
+
+class GetAllNotesRepositorySpy implements GetAllNotesRepository{
+    getAll(author: string): Promise<Note[]> {
+        throw new Error("Method not implemented.");
+    }
+}
+
 class GetAllNotes implements IGetAllNotes {
+    constructor(private getAllNotesRepository: GetAllNotesRepository) {}
+
   async getAll(
     author: string
   ): Promise<{ notes: Note[]; error: IError | null }> {
@@ -20,17 +32,20 @@ class GetAllNotes implements IGetAllNotes {
       };
     }
 
+    const notes = await this.getAllNotesRepository.getAll(author)
+
     return {
-      notes: [],
+      notes: notes,
       error: null,
     };
   }
 }
 
 const makeSut = () => {
-    const sut = new GetAllNotes()
+    const getAllNotesRepository = new GetAllNotesRepositorySpy()
+    const sut = new GetAllNotes(getAllNotesRepository)
 
-    return {sut}
+    return {sut, getAllNotesRepository}
 }
 
 describe("Get All Notes Use Case", () => {
@@ -43,16 +58,16 @@ describe("Get All Notes Use Case", () => {
         id: "1",
         title: "any_title",
         content: "any_content",
-        createAt: new Date("2022-31-10"),
-        updateAt: new Date("2022-31-10"),
+        createAt: new Date("2022-10-31"),
+        updateAt: new Date("2022-10-31"),
       },
       {
         author: "any_author",
         id: "2",
         title: "any_title",
         content: "any_content",
-        createAt: new Date("2022-31-10"),
-        updateAt: new Date("2022-31-10"),
+        createAt: new Date("2022-10-31"),
+        updateAt: new Date("2022-10-31"),
       },
     ];
 
