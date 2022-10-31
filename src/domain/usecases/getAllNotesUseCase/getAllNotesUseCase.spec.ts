@@ -27,9 +27,15 @@ class GetAllNotes implements IGetAllNotes {
   }
 }
 
+const makeSut = () => {
+    const sut = new GetAllNotes()
+
+    return {sut}
+}
+
 describe("Get All Notes Use Case", () => {
   it("should get all notes of a one author", async () => {
-    const sut = new GetAllNotes();
+    const {sut} = makeSut();
     const author = 'any_author'
     const MOCK_AUTHOR_NOTES: Note[] = [
       {
@@ -56,7 +62,7 @@ describe("Get All Notes Use Case", () => {
   });
 
   it("should return an 500 error if author not provided", async () => {
-    const sut = new GetAllNotes();
+    const {sut} = makeSut();
 
     const { error } = await sut.getAll("");
 
