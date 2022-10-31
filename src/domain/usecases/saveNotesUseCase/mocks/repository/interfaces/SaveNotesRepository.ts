@@ -4,4 +4,5 @@ import { NewNote } from "../../../interfaces/iNewNote";
 
 export interface SaveNotesRepository {
   save(newNote: NewNote): Promise<{note: Note | null, error: IError | null}>;
+  getNote(): Note | null;
 }
