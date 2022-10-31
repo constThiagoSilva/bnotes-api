@@ -51,9 +51,11 @@ describe('Save Notes Repository Spy',() => {
         }
 
         const MOCK_NEW_NOTE: Note = {
+            id: '1',
             author: 'any_author',
             title: 'any_title',
             content: 'any_content',
+            updateAt: null,
             createAt: new Date()
         }
 
@@ -70,9 +72,11 @@ describe('Save Notes Repository Spy',() => {
         }
 
         const MOCK_NEW_NOTE: Note = {
+            id: '1',
             author: 'any_author',
             title: 'any_title',
             content: 'any_content',
+            updateAt: null,
             createAt: new Date()
         }
 
