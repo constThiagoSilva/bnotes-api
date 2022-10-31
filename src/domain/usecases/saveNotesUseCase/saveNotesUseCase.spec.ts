@@ -1,3 +1,4 @@
+import { Note } from "../../models/Note";
 import { NewNote } from "./interfaces/iNewNote";
 import { SaveNotesRepositorySpy } from "./mocks/repository/SaveNotesRepositorySpy";
 import { SaveNotesUseCase } from "./SaveNotesUseCase";
@@ -8,6 +9,17 @@ interface UpdateNote {
   content: string;
   updateAt: Date;
 }
+
+export interface UpdateNotesRepository {
+  update(updatedNote: UpdateNote): Promise<Note>
+}
+
+export class UpdateNotesRepositorySpy implements UpdateNotesRepository {
+  update(updatedNote: UpdateNote): Promise<Note> {
+    throw new Error("Method not implemented.");
+  }
+}
+
 
 const makeSut = () => {
   const saveNotesRepository = new SaveNotesRepositorySpy()
