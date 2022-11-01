@@ -13,6 +13,7 @@ export class UpdateNotesRepositorySpy implements UpdateNotesRepository {
       content: updatedNote.content,
       updateAt: new Date(),
       createAt: new Date(),
+      status: "Active"
     };
     const newNote = this.getNote();
 

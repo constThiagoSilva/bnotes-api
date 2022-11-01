@@ -56,7 +56,8 @@ describe('Save Notes Repository Spy',() => {
             title: 'any_title',
             content: 'any_content',
             updateAt: null,
-            createAt: new Date()
+            createAt: new Date(),
+            status: "Active"
         }
 
         await sut.save(MOCK_NOTE)
@@ -81,7 +82,8 @@ describe('Save Notes Repository Spy',() => {
             title: 'any_title',
             content: 'any_content',
             updateAt: null,
-            createAt: new Date()
+            createAt: new Date(),
+            status: 'Active'
         }
         
         const {note} = await sut.save(MOCK_NOTE)

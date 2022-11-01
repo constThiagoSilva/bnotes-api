@@ -3,6 +3,7 @@ export interface Note {
     author: string;
     title: string;
     content: string;
+    status: 'Active' | 'Trash'
     createAt: Date;
     updateAt: Date | null
   }

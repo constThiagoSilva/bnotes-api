@@ -10,6 +10,7 @@ export class GetAllNotesRepositorySpy implements GetAllNotesRepository {
       content: "any_content",
       createAt: new Date("2022-10-31"),
       updateAt: new Date("2022-10-31"),
+      status: "Active",
     },
     {
       author: "any_author",
@@ -18,6 +19,7 @@ export class GetAllNotesRepositorySpy implements GetAllNotesRepository {
       content: "any_content",
       createAt: new Date("2022-10-31"),
       updateAt: new Date("2022-10-31"),
+      status: 'Active',
     },
   ];
   async getAll(author: string): Promise<Note[] | null> {

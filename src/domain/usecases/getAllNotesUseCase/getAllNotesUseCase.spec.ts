@@ -21,6 +21,7 @@ describe("Get All Notes Use Case", () => {
         content: "any_content",
         createAt: new Date("2022-10-31"),
         updateAt: new Date("2022-10-31"),
+        status: 'Active',
       },
       {
         author: "any_author",
@@ -29,6 +30,7 @@ describe("Get All Notes Use Case", () => {
         content: "any_content",
         createAt: new Date("2022-10-31"),
         updateAt: new Date("2022-10-31"),
+        status: 'Active'
       },
     ];
 
