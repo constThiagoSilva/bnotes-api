@@ -1,3 +1,3 @@
-[x] change the status of note 'Active' to 'Trash'
+[] change the status of note 'Active' to 'Trash'
 
-[] return 500 if no id of note is provided
+[x] return 500 if no id of note is provided
