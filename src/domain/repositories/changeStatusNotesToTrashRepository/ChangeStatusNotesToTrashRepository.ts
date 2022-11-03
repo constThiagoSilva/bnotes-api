@@ -1,7 +1,7 @@
 import { IError } from "../../helpers/errors/saveNotesUseCaseError/interfaces/IError"
 import { ProvidedParamsError } from "../../helpers/errors/saveNotesUseCaseError/ProviedParamsError"
 import { Note } from "../../models/Note"
-import { DatabaseSpy } from "./mocks/repository/DatabaseSpy"
+import { DatabaseSpy } from "../mocks/repository/DatabaseSpy"
 
 export class ChangeStatusNotesToTrash implements ChangeStatusNotesToTrash{
     async changeStatusToTrash(noteId: string): Promise<{trashedNote: Note | null, error: IError | null}> {

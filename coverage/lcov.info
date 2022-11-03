@@ -96,7 +96,7 @@ BRF:2
 BRH:2
 end_of_record
 TN:
-SF:src/domain/repositories/changeStatusNotesToTrashRepository/mocks/repository/DatabaseSpy.ts
+SF:src/domain/repositories/mocks/repository/DatabaseSpy.ts
 FN:4,DatabaseSpy
 FN:26,changeStatusToTrash
 FNF:2

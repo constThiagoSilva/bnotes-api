@@ -1,5 +1,5 @@
 import { Database } from "./interfaces/Database";
-import { Note } from "../../../../models/Note";
+import { Note } from "../../../models/Note";
 
 export class DatabaseSpy implements Database {
   private notes: Note[] = [
