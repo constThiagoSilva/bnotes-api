@@ -2,6 +2,6 @@
 
 # add note check
 
-# delete note
+# delete note check
 
 # read note check
