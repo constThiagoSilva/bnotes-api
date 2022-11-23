@@ -42,6 +42,7 @@ export class DatabaseSpy implements Database {
     return notes
   }
 
+  //helper method to mock
   setNotes(notes: Note[]) {
     this.notes.push(...notes)
   }
