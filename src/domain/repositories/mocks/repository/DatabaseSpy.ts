@@ -29,9 +29,12 @@ export class DatabaseSpy implements Database {
     if (!note) {
       return null;
     }
-
+    
     note.status = "Trash";
-
+    
     return note;
+  }
+  getAllNotes(author: string): Promise<Note[] | null> {
+    throw new Error("Method not implemented.");
   }
 }
