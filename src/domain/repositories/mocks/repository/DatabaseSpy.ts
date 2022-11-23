@@ -37,7 +37,7 @@ export class DatabaseSpy implements Database {
   async getAllNotes(author: string): Promise<Note[] | null> {
     const notes = this.notes.filter(note => note.author === author)
 
-    if (!notes) return null
+    if (notes.length < 1 || !notes) return null
 
     return notes
   }
