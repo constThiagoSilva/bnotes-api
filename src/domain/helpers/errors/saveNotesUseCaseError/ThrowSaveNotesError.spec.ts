@@ -14,4 +14,10 @@ describe('Throw Save Notes Error', () => {
         expect(sut?.code).toBe(500)
         expect(sut?.message.message).toBe("parameter: author, not provided")
     })
+    it('should return an error 500 with message: parameter: content, not provided, if content is not provided', () => {
+        const {sut} = makeSut({author: 'any_author', content: '', title: 'any_title'})
+
+        expect(sut?.code).toBe(500)
+        expect(sut?.message.message).toBe("parameter: content, not provided")
+    })
 })
