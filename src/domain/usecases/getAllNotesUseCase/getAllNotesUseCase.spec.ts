@@ -1,13 +1,5 @@
 import { Note } from "../../models/Note";
-import { GetAllNotesUseCase } from "./GetAllNotesUseCase";
-import { GetAllNotesRepositorySpy } from "./mocks/GetAllNotesRepositorySpy/GetAllNotesRepositorySpy";
-
-const makeSut = () => {
-  const getAllNotesRepository = new GetAllNotesRepositorySpy();
-  const sut = new GetAllNotesUseCase(getAllNotesRepository);
-
-  return { sut, getAllNotesRepository };
-};
+import {makeSut} from './factories/makeSut'
 
 describe("Get All Notes Use Case", () => {
   it("should get all notes of a one author", async () => {
