@@ -41,4 +41,8 @@ export class DatabaseSpy implements Database {
 
     return notes
   }
+
+  setNotes(notes: Note[]) {
+    this.notes.push(...notes)
+  }
 }
