@@ -1,12 +1,4 @@
-import { DeleteNoteUseCase } from "./deleteNoteUseCase";
-import { DeleteNoteRepositorySpy } from "./mocks/repository/SaveNoteRepositorySpy";
-
-const makeSut = () => {
-  const deleteNoteRepository = new DeleteNoteRepositorySpy();
-  const sut = new DeleteNoteUseCase(deleteNoteRepository);
-
-  return { sut, deleteNoteRepository };
-};
+import { makeSut } from "./factories/makeSut";
 
 describe("Delete Note Use Case", () => {
   it("should change the status of note 'Active' to 'Trash'", async () => {
