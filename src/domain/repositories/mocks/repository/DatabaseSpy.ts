@@ -34,7 +34,11 @@ export class DatabaseSpy implements Database {
     
     return note;
   }
-  getAllNotes(author: string): Promise<Note[] | null> {
-    throw new Error("Method not implemented.");
+  async getAllNotes(author: string): Promise<Note[] | null> {
+    const notes = this.notes.filter(note => note.author === author)
+
+    if (!notes) return null
+
+    return notes
   }
 }
