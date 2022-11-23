@@ -1,17 +1,6 @@
 import { NewNote } from "./interfaces/iNewNote";
 import { UpdateNote } from "./interfaces/IUpdateNote";
-import { SaveNotesRepositorySpy } from "./mocks/repository/saveNotesRepositorySpy/SaveNotesRepositorySpy";
-import { UpdateNotesRepositorySpy } from "./mocks/repository/updateNotesRepositorySpy/UpdateNotesRepositorySpy";
-import { SaveNotesUseCase } from "./SaveNotesUseCase";
-
-
-const makeSut = () => {
-  const saveNotesRepository = new SaveNotesRepositorySpy()
-  const updateNotesRepository = new UpdateNotesRepositorySpy()
-  const sut = new SaveNotesUseCase(saveNotesRepository, updateNotesRepository);
-
-  return { sut, saveNotesRepository };
-};
+import {makeSut} from './factories/makeSut'
 
 describe("Save Notes Use Case", () => {
 
