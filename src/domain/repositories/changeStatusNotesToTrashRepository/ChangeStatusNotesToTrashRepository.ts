@@ -22,7 +22,7 @@ export class ChangeStatusNotesToTrashRepository implements IChangeStatusNotesToT
             return {
                 error: {
                     code: 400,
-                    message: new ProvidedParamsError('note not exists!')
+                    message: new Error('note not exists!')
                 },
                 trashedNote: null
             }
