@@ -1,6 +1,7 @@
 import { makeSut } from "./factories/makeSut";
 
 describe("Delete Note Use Case", () => {
+  //UNIT
   it("should change the status of note 'Active' to 'Trash'", async () => {
     const { sut } = makeSut();
     const MOCK_NOTE_ID = "1";
@@ -19,6 +20,7 @@ describe("Delete Note Use Case", () => {
     expect(error?.message.message).toBe("parameter: id, not provided");
   });
 
+  //INTEGRATION
   it('should return error if repository thowrs an error', async () => {
      const { sut } = makeSut();
      const mockNotExistingId = "not exist id";
@@ -33,4 +35,3 @@ describe("Delete Note Use Case", () => {
      expect(changeStatusNotesToTrashUseCaseIdNotProvidedThrowError.error?.message.message).toBe('parameter: id, not provided')
    })
 });
-
