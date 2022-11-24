@@ -174,13 +174,13 @@ BRF:10
 BRH:10
 end_of_record
 TN:
-SF:src/domain/usecases/deleteNoteUseCase/deleteNoteUseCase.ts
-FN:8,DeleteNoteUseCase
-FN:10,delete
+SF:src/domain/usecases/changeStatusNotesToTrashUseCase/changeStatusNotesToTrashUseCase.ts
+FN:8,changeStatusNotesToTrashUseCase
+FN:10,changeStatusNotesToTrashUseCase
 FNF:2
 FNH:2
-FNDA:2,DeleteNoteUseCase
-FNDA:2,delete
+FNDA:2,changeStatusNotesToTrashUseCase
+FNDA:2,changeStatusNotesToTrashUseCase
 DA:1,1
 DA:2,1
 DA:3,1
@@ -220,7 +220,7 @@ BRF:3
 BRH:3
 end_of_record
 TN:
-SF:src/domain/usecases/deleteNoteUseCase/factories/makeSut.ts
+SF:src/domain/usecases/changeStatusNotesToTrashUseCase/factories/makeSut.ts
 FN:4,makeSut
 FNF:1
 FNH:1

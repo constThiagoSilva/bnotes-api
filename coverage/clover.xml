@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1669251688749" clover="3.2.0">
-  <project timestamp="1669251688749" name="All files">
+<coverage generated="1669252070611" clover="3.2.0">
+  <project timestamp="1669252070611" name="All files">
     <metrics statements="370" coveredstatements="370" conditionals="62" coveredconditionals="59" methods="25" coveredmethods="25" elements="457" coveredelements="454" complexity="0" loc="370" ncloc="370" packages="12" files="13" classes="13"/>
     <package name="helpers.errors.saveNotesUseCaseError">
       <metrics statements="29" coveredstatements="29" conditionals="9" coveredconditionals="9" methods="2" coveredmethods="2"/>
@@ -126,9 +126,9 @@
         <line num="49" count="9" type="stmt"/>
       </file>
     </package>
-    <package name="usecases.deleteNoteUseCase">
+    <package name="usecases.changeStatusNotesToTrashUseCase">
       <metrics statements="30" coveredstatements="30" conditionals="3" coveredconditionals="3" methods="2" coveredmethods="2"/>
-      <file name="deleteNoteUseCase.ts" path="/home/thiago/estudo/node/projects/bnotes-api/src/domain/usecases/deleteNoteUseCase/deleteNoteUseCase.ts">
+      <file name="changeStatusNotesToTrashUseCase.ts" path="/home/thiago/estudo/node/projects/bnotes-api/src/domain/usecases/changeStatusNotesToTrashUseCase/changeStatusNotesToTrashUseCase.ts">
         <metrics statements="30" coveredstatements="30" conditionals="3" coveredconditionals="3" methods="2" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -162,9 +162,9 @@
         <line num="30" count="1" type="stmt"/>
       </file>
     </package>
-    <package name="usecases.deleteNoteUseCase.factories">
+    <package name="usecases.changeStatusNotesToTrashUseCase.factories">
       <metrics statements="9" coveredstatements="9" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
-      <file name="makeSut.ts" path="/home/thiago/estudo/node/projects/bnotes-api/src/domain/usecases/deleteNoteUseCase/factories/makeSut.ts">
+      <file name="makeSut.ts" path="/home/thiago/estudo/node/projects/bnotes-api/src/domain/usecases/changeStatusNotesToTrashUseCase/factories/makeSut.ts">
         <metrics statements="9" coveredstatements="9" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>

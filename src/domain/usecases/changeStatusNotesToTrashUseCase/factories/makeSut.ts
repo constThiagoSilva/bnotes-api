@@ -1,9 +1,9 @@
 import { ChangeStatusNotesToTrash } from "../../../repositories/changeStatusNotesToTrashRepository/ChangeStatusNotesToTrashRepository";
-import { DeleteNoteUseCase } from "../deleteNoteUseCase";
+import { changeStatusNotesToTrashUseCase } from "../changeStatusNotesToTrashUseCase";
 
 export const makeSut = () => {
   const changeStatusNotesToTrashRepository = new ChangeStatusNotesToTrash();
-  const sut = new DeleteNoteUseCase(changeStatusNotesToTrashRepository);
+  const sut = new changeStatusNotesToTrashUseCase(changeStatusNotesToTrashRepository);
 
   return { sut, changeStatusNotesToTrashRepository };
 };
