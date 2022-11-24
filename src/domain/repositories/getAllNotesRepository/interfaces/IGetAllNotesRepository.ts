@@ -5,6 +5,6 @@ export interface IGetAllNotesRepository {
   getAllNotes(author: string): Promise<{
     notes: Note[] | null;
     error: IError | null;
-    message: string | null;
+    message: Error | null;
   }>;
 }
