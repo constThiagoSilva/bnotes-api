@@ -1,13 +1,5 @@
 import { Note } from "../../models/Note";
-import { DatabaseSpy } from "../mocks/repository/DatabaseSpy";
-import { GetAllNotesRepository } from "./GetAllNotesRepository";
-
-const makeSut = () => {
-  const databaseSpy = new DatabaseSpy();
-  const sut = new GetAllNotesRepository(databaseSpy);
-
-  return {sut, databaseSpy}
-}
+import {makeSut} from './factories/makeSut'
 
 describe("Get All Notes Repository", () => {
   it("should return all notes of author", async () => {
