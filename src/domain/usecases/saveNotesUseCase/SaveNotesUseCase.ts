@@ -22,8 +22,8 @@ export class SaveNotesUseCase implements ISaveNotesUseCase {
       };
     }
 
-    if (this.saveNotesRepository.getNote()) {
-      const note = await this.updateNotesRepository.update(id as string, {
+    if (this.saveNotesRepository.getNote(String(id))) {
+      const note = await this.updateNotesRepository.update(String(id), {
         author: newNote.author,
         title: newNote.title,
         content: newNote.content,
