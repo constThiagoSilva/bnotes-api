@@ -10,7 +10,6 @@ export class GetAllNotesRepository implements IGetAllNotesRepository {
   async getAllNotes(author: string): Promise<{
     notes: Note[] | null;
     error: IError | null;
-    message: Error | null;
   }> {
     if (!author) {
       return {
@@ -19,7 +18,6 @@ export class GetAllNotesRepository implements IGetAllNotesRepository {
           message: new ProvidedParamsError("author"),
         },
         notes: null,
-        message: null,
       };
     }
 
@@ -32,14 +30,12 @@ export class GetAllNotesRepository implements IGetAllNotesRepository {
           code: 400,
           message: new Error("no notes yet"),
         },
-        message: new Error("no notes yet"),
       };
     }
 
     return {
       notes: notes,
       error: null,
-      message: null,
     };
   }
 }

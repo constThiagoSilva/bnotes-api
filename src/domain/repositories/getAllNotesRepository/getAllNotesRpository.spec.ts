@@ -35,9 +35,9 @@ describe("Get All Notes Repository", () => {
   it("should return the message: no notes yet, if author no have notes", async () => {
     const {sut} = makeSut()
 
-    const { message } = await sut.getAllNotes("any_author_with_no_notes");
+    const { error } = await sut.getAllNotes("any_author_with_no_notes");
 
-    expect(message?.message).toBe("no notes yet");
+    expect(error?.message.message).toBe("no notes yet");
   });
   it("if author not provided, retrun error 500", async () => {
     const {sut} = makeSut()
