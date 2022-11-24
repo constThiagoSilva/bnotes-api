@@ -1,9 +1,9 @@
+import { ChangeStatusNotesToTrash } from "../../../repositories/changeStatusNotesToTrashRepository/ChangeStatusNotesToTrashRepository";
 import { DeleteNoteUseCase } from "../deleteNoteUseCase";
-import { DeleteNoteRepositorySpy } from "../mocks/repository/SaveNoteRepositorySpy";
 
 export const makeSut = () => {
-  const deleteNoteRepository = new DeleteNoteRepositorySpy();
-  const sut = new DeleteNoteUseCase(deleteNoteRepository);
+  const changeStatusNotesToTrashRepository = new ChangeStatusNotesToTrash();
+  const sut = new DeleteNoteUseCase(changeStatusNotesToTrashRepository);
 
-  return { sut, deleteNoteRepository };
+  return { sut, changeStatusNotesToTrashRepository };
 };

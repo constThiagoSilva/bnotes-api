@@ -1,11 +1,11 @@
 import { IError } from "../../helpers/errors/saveNotesUseCaseError/interfaces/IError";
 import { ProvidedParamsError } from "../../helpers/errors/saveNotesUseCaseError/ProviedParamsError";
 import { Note } from "../../models/Note";
+import { ChangeStatusNotesToTrash } from "../../repositories/changeStatusNotesToTrashRepository/ChangeStatusNotesToTrashRepository";
 import { IDeleteNoteUseCase } from "./interfaces/ISaveNotesUseCase";
-import { DeleteNoteRepository } from "./mocks/repository/interfaces/SaveNotesRepository";
 
 export class DeleteNoteUseCase implements IDeleteNoteUseCase {
-  constructor(private deleteNoteRepository: DeleteNoteRepository) {}
+  constructor(private changeStatusNotesToTrash: ChangeStatusNotesToTrash) {}
 
   async delete(
     id: string
@@ -20,10 +20,10 @@ export class DeleteNoteUseCase implements IDeleteNoteUseCase {
       };
     }
 
-    const isDeleted = await this.deleteNoteRepository.delete(id);
+    const isDeleted = await this.changeStatusNotesToTrash.changeStatusToTrash(id);
 
     return {
-      deleteNote: isDeleted,
+      deleteNote: isDeleted.trashedNote,
       error: null,
     };
   }

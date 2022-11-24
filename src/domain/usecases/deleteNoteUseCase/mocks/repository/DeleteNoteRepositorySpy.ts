@@ -1,8 +1,11 @@
 import { Note } from "../../../../models/Note";
-import { DeleteNoteRepository } from "./interfaces/SaveNotesRepository";
+import { DeleteNoteRepository } from "./interfaces/DeleteNotesRepository";
 
 export class DeleteNoteRepositorySpy implements DeleteNoteRepository {
   async delete(id: string): Promise<Note | null> {
+
+
+
     return {
       author: "any_author",
       content: "any_content",
