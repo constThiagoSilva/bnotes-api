@@ -1,9 +1,9 @@
-import { ChangeStatusNotesToTrash } from "./ChangeStatusNotesToTrashRepository"
+import { ChangeStatusNotesToTrashRepository } from "./ChangeStatusNotesToTrashRepository"
 import { Note } from "../../models/Note"
 
 describe('Change Status Notes To Trash Repository', () => {
     it('should change status note to trash with id', async () => {
-        const sut = new ChangeStatusNotesToTrash()
+        const sut = new ChangeStatusNotesToTrashRepository()
         const MOCK_NOTE: Note = {
             id: '1',
             author: 'any_author',
@@ -19,7 +19,7 @@ describe('Change Status Notes To Trash Repository', () => {
         expect(trashedNote?.status).toBe('Trash')
     })
     it('should return 500 if noteId not provided', async () => {
-        const sut = new ChangeStatusNotesToTrash()
+        const sut = new ChangeStatusNotesToTrashRepository()
 
         const {error} = await sut.changeStatusToTrash('')
 
@@ -27,7 +27,7 @@ describe('Change Status Notes To Trash Repository', () => {
         expect(error?.message.message).toBe('parameter: noteId, not provided')
     })
     it('should an error with message: note not exists, if note-id provided not exist', async () => {
-        const sut = new ChangeStatusNotesToTrash()
+        const sut = new ChangeStatusNotesToTrashRepository()
         const mockNotExistingNoteId = 'not_exists_note_id'
 
         const {error} = await sut.changeStatusToTrash(mockNotExistingNoteId)

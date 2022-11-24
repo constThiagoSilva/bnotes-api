@@ -2,8 +2,9 @@ import { IError } from "../../helpers/errors/saveNotesUseCaseError/interfaces/IE
 import { ProvidedParamsError } from "../../helpers/errors/saveNotesUseCaseError/ProviedParamsError"
 import { Note } from "../../models/Note"
 import { DatabaseSpy } from "../mocks/repository/DatabaseSpy"
+import { IChangeStatusNotesToTrashRepository } from "./interfaces/IChangeStatusNotesToTrashRepository"
 
-export class ChangeStatusNotesToTrash implements ChangeStatusNotesToTrash{
+export class ChangeStatusNotesToTrashRepository implements IChangeStatusNotesToTrashRepository {
     async changeStatusToTrash(noteId: string): Promise<{trashedNote: Note | null, error: IError | null}> {
         if (!noteId) {
             return {
