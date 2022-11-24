@@ -6,9 +6,9 @@ describe("Delete Note Use Case", () => {
     const { sut } = makeSut();
     const MOCK_NOTE_ID = "1";
 
-    const { deleteNote } = await sut.changeStatusNotesToTrashUseCase(MOCK_NOTE_ID);
+    const { trashedNote } = await sut.changeStatusNotesToTrashUseCase(MOCK_NOTE_ID);
 
-    expect(deleteNote?.status).toBe("Trash");
+    expect(trashedNote?.status).toBe("Trash");
   });
 
   it("should return 500 if no id of note is provided", async () => {

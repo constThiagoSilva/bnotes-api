@@ -9,28 +9,28 @@ export class changeStatusNotesToTrashUseCase implements IChangeStatusNotesToTras
 
   async changeStatusNotesToTrashUseCase(
     id: string
-  ): Promise<{ error: IError | null; deleteNote: Note | null }> {
+  ): Promise<{ error: IError | null; trashedNote: Note | null }> {
     if (!id) {
       return {
         error: {
           code: 500,
           message: new ProvidedParamsError("id"),
         },
-        deleteNote: null,
+        trashedNote: null,
       };
     }
 
-    const isDeleted = await this.changeStatusNotesToTrash.changeStatusToTrash(id);
+    const trashedNote = await this.changeStatusNotesToTrash.changeStatusToTrash(id);
 
-    if (isDeleted.error) {
+    if (trashedNote.error) {
       return {
-        deleteNote: null,
-        error: isDeleted.error
+        trashedNote: null,
+        error: trashedNote.error
       }
     }
 
     return {
-      deleteNote: isDeleted.trashedNote,
+      trashedNote: trashedNote.trashedNote,
       error: null,
     };
   }
