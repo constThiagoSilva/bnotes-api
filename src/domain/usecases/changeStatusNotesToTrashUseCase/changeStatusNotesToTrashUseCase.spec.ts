@@ -18,4 +18,13 @@ describe("Delete Note Use Case", () => {
     expect(error?.code).toBe(500);
     expect(error?.message.message).toBe("parameter: id, not provided");
   });
+
+  // it.only('should return error if repository thowrs an error', async () => {
+  //   const { sut } = makeSut();
+  //   const mockNotExistingId = "not exist id";
+
+  //   const changeStatusNotesToTrashUseCaseThrowError = await sut.changeStatusNotesToTrashUseCase(mockNotExistingId);
+
+  //   expect(changeStatusNotesToTrashUseCaseThrowError.error?.message).toThrow('error');
+  // })
 });

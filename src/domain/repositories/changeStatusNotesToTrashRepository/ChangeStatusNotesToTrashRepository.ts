@@ -17,6 +17,16 @@ export class ChangeStatusNotesToTrash implements ChangeStatusNotesToTrash{
 
         const trashedNote = await new DatabaseSpy().changeStatusToTrash(noteId)
 
+        if (!trashedNote) {
+            return {
+                error: {
+                    code: 400,
+                    message: new ProvidedParamsError('note not exists!')
+                },
+                trashedNote: null
+            }
+        }
+
         return {
             trashedNote,
             error: null,

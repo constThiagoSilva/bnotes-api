@@ -26,4 +26,12 @@ describe('Change Status Notes To Trash Repository', () => {
         expect(error?.code).toBe(500)
         expect(error?.message.message).toBe('parameter: noteId, not provided')
     })
+    it('should an error with message: note not exists, if note-id provided not exist', async () => {
+        const sut = new ChangeStatusNotesToTrash()
+        const mockNotExistingNoteId = 'not_exists_note_id'
+
+        const {error} = await sut.changeStatusToTrash(mockNotExistingNoteId)
+
+        expect(error?.message.message).toBe('parameter: note not exists!, not provided')
+    })
 })
