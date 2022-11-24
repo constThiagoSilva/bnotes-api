@@ -19,12 +19,18 @@ describe("Delete Note Use Case", () => {
     expect(error?.message.message).toBe("parameter: id, not provided");
   });
 
-  // it.only('should return error if repository thowrs an error', async () => {
-  //   const { sut } = makeSut();
-  //   const mockNotExistingId = "not exist id";
+  it('should return error if repository thowrs an error', async () => {
+     const { sut } = makeSut();
+     const mockNotExistingId = "not exist id";
 
-  //   const changeStatusNotesToTrashUseCaseThrowError = await sut.changeStatusNotesToTrashUseCase(mockNotExistingId);
+     const changeStatusNotesToTrashUseCaseNotExistingIdThrowError = await sut.changeStatusNotesToTrashUseCase(mockNotExistingId);
 
-  //   expect(changeStatusNotesToTrashUseCaseThrowError.error?.message).toThrow('error');
-  // })
+     expect(changeStatusNotesToTrashUseCaseNotExistingIdThrowError.error?.message.message).toBe('note not exists!');
+
+     const mockNullId = ''
+     const changeStatusNotesToTrashUseCaseIdNotProvidedThrowError = await sut.changeStatusNotesToTrashUseCase(mockNullId);
+
+     expect(changeStatusNotesToTrashUseCaseIdNotProvidedThrowError.error?.message.message).toBe('parameter: id, not provided')
+   })
 });
+

@@ -22,6 +22,13 @@ export class changeStatusNotesToTrashUseCase implements IChangeStatusNotesToTras
 
     const isDeleted = await this.changeStatusNotesToTrash.changeStatusToTrash(id);
 
+    if (isDeleted.error) {
+      return {
+        deleteNote: null,
+        error: isDeleted.error
+      }
+    }
+
     return {
       deleteNote: isDeleted.trashedNote,
       error: null,
