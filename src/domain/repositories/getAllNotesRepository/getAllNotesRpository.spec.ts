@@ -2,10 +2,16 @@ import { Note } from "../../models/Note";
 import { DatabaseSpy } from "../mocks/repository/DatabaseSpy";
 import { GetAllNotesRepository } from "./GetAllNotesRepository";
 
+const makeSut = () => {
+  const databaseSpy = new DatabaseSpy();
+  const sut = new GetAllNotesRepository(databaseSpy);
+
+  return {sut, databaseSpy}
+}
+
 describe("Get All Notes Repository", () => {
   it("should return all notes of author", async () => {
-    const databaseSpy = new DatabaseSpy();
-    const sut = new GetAllNotesRepository(databaseSpy);
+    const {sut, databaseSpy} = makeSut()
     const insertNewNotesToMock: Note[] = [
         {
           id: "3",
@@ -35,16 +41,14 @@ describe("Get All Notes Repository", () => {
     expect(notes).toEqual(insertNewNotesToMock)
   });
   it("should return the message: no notes yet, if author no have notes", async () => {
-    const databaseSpy = new DatabaseSpy();
-    const sut = new GetAllNotesRepository(databaseSpy);
+    const {sut} = makeSut()
 
     const { message } = await sut.getAllNotes("any_author_with_no_notes");
 
     expect(message).toBe("no notes yet");
   });
   it("if author not provided, retrun error 500", async () => {
-    const databaseSpy = new DatabaseSpy();
-    const sut = new GetAllNotesRepository(databaseSpy);
+    const {sut} = makeSut()
 
     const { error } = await sut.getAllNotes("");
 
