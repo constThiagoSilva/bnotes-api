@@ -15,7 +15,7 @@ describe("Save Notes Use Case", () => {
 
     await sut.save(aNewNote);
 
-    expect(saveNotesRepository.getNote).not.toBe(null);
+    expect(saveNotesRepository.getNoteById).not.toBe(null);
   });
   it("should return a note with same properties of parameters", async () => {
     const { sut } = makeSut();

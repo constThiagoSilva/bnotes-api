@@ -494,13 +494,13 @@ SF:src/domain/usecases/saveNotesUseCase/mocks/repository/saveNotesRepositorySpy/
 FN:6,ThrowSaveNotesRepositorySpy
 FN:27,SaveNotesRepositorySpy
 FN:30,save
-FN:57,getNote
+FN:57,getNoteById
 FNF:4
 FNH:4
 FNDA:8,ThrowSaveNotesRepositorySpy
 FNDA:11,SaveNotesRepositorySpy
 FNDA:8,save
-FNDA:13,getNote
+FNDA:13,getNoteById
 DA:1,1
 DA:2,1
 DA:3,1
