@@ -48,4 +48,12 @@ describe("Database Spy", () => {
 
     expect(notes).toEqual(mockNotes);
   });
+  it('should return null if author not exists', async () => {
+    const sut = new DatabaseSpy();
+    const mockAuthor = "not exists_author";
+
+    const nullNotes = await sut.getAllNotes(mockAuthor);
+
+    expect(nullNotes).toBeFalsy()
+  })
 });
