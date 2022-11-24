@@ -9,7 +9,7 @@ export class GetAllNotesUseCase implements IGetAllNotesUseCase {
 
   async getAllNotes(
     author: string
-  ): Promise<{ notes: Note[] | null; error: IError | null; message: string }> {
+  ): Promise<{ notes: Note[] | null; error: IError | null; }> {
     if (!author) {
       return {
         notes: [],
@@ -17,7 +17,6 @@ export class GetAllNotesUseCase implements IGetAllNotesUseCase {
           code: 500,
           message: new ProvidedParamsError("author parameter not provided"),
         },
-        message: "",
       };
     }
 
@@ -27,14 +26,12 @@ export class GetAllNotesUseCase implements IGetAllNotesUseCase {
       return {
         notes: [],
         error: error,
-        message: "no notes yet",
       };
     }
 
     return {
       notes: notes,
       error: null,
-      message: "",
     };
   }
 }

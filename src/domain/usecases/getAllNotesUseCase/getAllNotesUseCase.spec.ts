@@ -34,9 +34,9 @@ describe("Get All Notes Use Case", () => {
     const { sut } = makeSut();
     const author = "author_no_notes";
 
-    const { message } = await sut.getAllNotes(author);
+    const { error } = await sut.getAllNotes(author);
 
-    expect(message).toBe("no notes yet");
+    expect(error?.message.message).toBe("no notes yet");
   });
 
   it("should return an 500 error if author not provided", async () => {
