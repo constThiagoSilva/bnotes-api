@@ -2,7 +2,7 @@ import { Note } from "../../models/Note";
 import {makeSut} from './factories/makeSut'
 
 describe("Get All Notes Use Case", () => {
-  it("should get all notes of a one author", async () => {
+  it.only("should get all notes of a one author", async () => {
     const { sut } = makeSut();
     const author = "any_author";
     const MOCK_AUTHOR_NOTES: Note[] = [

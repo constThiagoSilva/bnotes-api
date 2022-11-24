@@ -1,15 +1,15 @@
 import { IError } from "../../helpers/errors/saveNotesUseCaseError/interfaces/IError";
 import { ProvidedParamsError } from "../../helpers/errors/saveNotesUseCaseError/ProviedParamsError";
 import { Note } from "../../models/Note";
+import { IGetAllNotesRepository } from "../../repositories/getAllNotesRepository/interfaces/IGetAllNotesRepository";
 import { IGetAllNotesUseCase } from "./interfaces/IGetAllNotesUseCase";
-import { GetAllNotesRepository } from "./mocks/interfaces/GetAllNotesRepository";
 
 export class GetAllNotesUseCase implements IGetAllNotesUseCase {
-  constructor(private getAllNotesRepository: GetAllNotesRepository) {}
+  constructor(private getAllNotesRepository: IGetAllNotesRepository) {}
 
   async getAll(
     author: string
-  ): Promise<{ notes: Note[]; error: IError | null; message: string }> {
+  ): Promise<{ notes: Note[] | null; error: IError | null; message: string }> {
     if (!author) {
       return {
         notes: [],
@@ -21,18 +21,18 @@ export class GetAllNotesUseCase implements IGetAllNotesUseCase {
       };
     }
 
-    const notes = await this.getAllNotesRepository.getAll(author);
+    const {notes, error} = await this.getAllNotesRepository.getAllNotes(author);
 
-    if (!notes) {
+    if (error) {
       return {
         notes: [],
-        error: null,
+        error: error,
         message: "no notes yet",
       };
     }
 
     return {
-      notes: notes as Note[],
+      notes: notes,
       error: null,
       message: "",
     };

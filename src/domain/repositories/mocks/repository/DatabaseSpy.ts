@@ -9,8 +9,8 @@ export class DatabaseSpy implements Database {
       content: "any_content",
       title: "any_title",
       status: "Active",
-      createAt: new Date("2020-01-10"),
-      updateAt: new Date("2020-01-10"),
+      createAt: new Date("2022-10-31"),
+      updateAt: new Date("2022-10-31"),
     },
     {
       id: "2",
@@ -18,8 +18,8 @@ export class DatabaseSpy implements Database {
       content: "any_content",
       title: "any_title",
       status: "Active",
-      createAt: new Date("2020-01-10"),
-      updateAt: new Date("2020-01-10"),
+      createAt: new Date("2022-10-31"),
+      updateAt: new Date("2022-10-31"),
     },
   ];
 
