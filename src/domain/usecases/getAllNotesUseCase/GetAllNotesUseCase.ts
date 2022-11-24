@@ -7,7 +7,7 @@ import { IGetAllNotesUseCase } from "./interfaces/IGetAllNotesUseCase";
 export class GetAllNotesUseCase implements IGetAllNotesUseCase {
   constructor(private getAllNotesRepository: IGetAllNotesRepository) {}
 
-  async getAll(
+  async getAllNotes(
     author: string
   ): Promise<{ notes: Note[] | null; error: IError | null; message: string }> {
     if (!author) {

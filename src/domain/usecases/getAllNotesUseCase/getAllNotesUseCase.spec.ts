@@ -2,7 +2,7 @@ import { Note } from "../../models/Note";
 import {makeSut} from './factories/makeSut'
 
 describe("Get All Notes Use Case", () => {
-  it.only("should get all notes of a one author", async () => {
+  it("should get all notes of a one author", async () => {
     const { sut } = makeSut();
     const author = "any_author";
     const MOCK_AUTHOR_NOTES: Note[] = [
@@ -26,7 +26,7 @@ describe("Get All Notes Use Case", () => {
       },
     ];
 
-    const { notes } = await sut.getAll(author);
+    const { notes } = await sut.getAllNotes(author);
 
     expect(notes).toEqual(MOCK_AUTHOR_NOTES);
   });
@@ -34,7 +34,7 @@ describe("Get All Notes Use Case", () => {
     const { sut } = makeSut();
     const author = "author_no_notes";
 
-    const { message } = await sut.getAll(author);
+    const { message } = await sut.getAllNotes(author);
 
     expect(message).toBe("no notes yet");
   });
@@ -42,7 +42,7 @@ describe("Get All Notes Use Case", () => {
   it("should return an 500 error if author not provided", async () => {
     const { sut } = makeSut();
 
-    const { error } = await sut.getAll("");
+    const { error } = await sut.getAllNotes("");
 
     expect(error?.code).toBe(500);
   });

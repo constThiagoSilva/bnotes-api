@@ -25,12 +25,16 @@ export class GetAllNotesRepository implements IGetAllNotesRepository {
 
     const notes = await this.database.getAllNotes(author);
 
-    if (!notes)
+    if (!notes) {
       return {
         notes: [],
-        error: null,
+        error: {
+          code: 400,
+          message: new Error("no notes yet"),
+        },
         message: new Error("no notes yet"),
       };
+    }
 
     return {
       notes: notes,
