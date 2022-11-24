@@ -60,13 +60,14 @@ describe('Save Notes Repository Spy',() => {
             status: "Active"
         }
 
-        await sut.save(MOCK_NOTE)
+        const {note} = await sut.save(MOCK_NOTE)
+        const noteId = String(note?.id)
 
         
-        expect(sut.getNoteById()?.id).toBe(MOCK_NEW_NOTE.id)
-        expect(sut.getNoteById()?.author).toBe(MOCK_NEW_NOTE.author)
-        expect(sut.getNoteById()?.title).toBe(MOCK_NEW_NOTE.title)
-        expect(sut.getNoteById()?.content).toBe(MOCK_NEW_NOTE.content)
+        expect(sut.getNoteById(noteId)?.id).toBe(MOCK_NEW_NOTE.id)
+        expect(sut.getNoteById(noteId)?.author).toBe(MOCK_NEW_NOTE.author)
+        expect(sut.getNoteById(noteId)?.title).toBe(MOCK_NEW_NOTE.title)
+        expect(sut.getNoteById(noteId)?.content).toBe(MOCK_NEW_NOTE.content)
     })
     it('should return a note with passed in parameters', async () => {
         const sut = new SaveNotesRepositorySpy()
