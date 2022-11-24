@@ -49,12 +49,11 @@ export class SaveNotesRepositorySpy implements SaveNotesRepository {
       createAt: new Date(),
       status: "Active"
     };
-    const newNote = this.getNoteById();
 
-    return {note: newNote, error: null};
+    return {note: this.note, error: null};
   }
 
-  public getNoteById() {
+  public getNoteById(noteId: string) {
     return this.note;
   }
 }
