@@ -13,14 +13,20 @@ class UpdateNotesRepository implements IUpdateNotesRepository {
   constructor(private databaseSpy: Database) {}
 
   async updateNote(noteId: string, newNote: NewNote): Promise<{updatedNote: Note | null, error: IError | null}> {
+    if (!newNote.author) {
+        return {
+            updatedNote: null,
+            error: {
+                message: new ProvidedParamsError('author'),
+                code: 500
+            }
+        }
+    }
     const updatedNote = await this.databaseSpy.update(noteId, newNote);
 
     return {
         updatedNote,
-        error: {
-            message: new ProvidedParamsError('author'),
-            code: 500
-        }
+        error: null
     };
   }
 }
@@ -65,12 +71,12 @@ describe("Update Notes Repository", () => {
     const { sut, databaseSpy } = makeSut();
     const mockNoteId = "1";
     const mockNewNote: NewNote = {
-      author: "",
+      author: "any_author",
       content: "any_content",
       title: "any_title",
     };
     const mockUpdateNote: NewNote = {
-      author: "any_author",
+      author: "",
       content: "other_content",
       title: "other_title",
     };
