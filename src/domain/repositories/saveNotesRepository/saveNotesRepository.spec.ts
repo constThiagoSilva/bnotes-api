@@ -9,13 +9,13 @@ interface ISaveNotesRepository {
   getNoteById(noteId: string): Promise<Note | null>;
 }
 interface ISaveNotesRepositorySpy {
-  create(newNote: NewNote): Promise<Note | null>;
+  create(newNote: NewNote): Promise<{note: Note | null, error: IError | null}>;
 }
 
 class SaveNotesRepositorySpy implements ISaveNotesRepositorySpy {
   private note: Note | null = null;
 
-  async create(newNote: NewNote): Promise<Note | null> {
+  async create(newNote: NewNote): Promise<{note: Note | null, error: IError | null}> {
     this.note = {
       id: "1",
       author: newNote.author,
@@ -26,7 +26,13 @@ class SaveNotesRepositorySpy implements ISaveNotesRepositorySpy {
       updateAt: new Date("2022-10-10"),
     };
 
-    return this.note;
+    return {
+      note: this.note,
+      error: {
+        code: 400,
+        message: new Error('any_error')
+      }
+    };
   }
   async findById(noteId: string): Promise<Note | null> {
     if (this.note?.id !== noteId) {
@@ -67,10 +73,17 @@ class SaveNotesRepository implements ISaveNotesRepository {
     }
 
 
-    const savedNote = await this.saveNotesRepositorySpy.create(newNote);
+    const {note, error} = await this.saveNotesRepositorySpy.create(newNote);
+
+    if (error) {
+      return {
+        error: error,
+        savedNote: null
+      }
+    }
 
     return {
-      savedNote,
+      savedNote: note,
       error: {
         code: 400,
         message: new ProvidedParamsError('author')
@@ -141,6 +154,19 @@ describe("Save Notes Repository", () => {
 
     expect(error?.code).toBe(500)
     expect(error?.message.message).toBe('parameter: title, not provided')
+  })
+  it('should return an error returned from dependecies', async () => {
+    const saveNotesRepositorySpy = new SaveNotesRepositorySpy();
+    const sut = new SaveNotesRepository(saveNotesRepositorySpy);
+    const mockFakeNewNote: NewNote = {
+      author: "any_auhtor",
+      content: "any_content",
+      title: "any_title",
+    };
+
+    const {error} = await sut.saveNote(mockFakeNewNote)
+
+    expect(error?.message.message).toBe('any_error')
   })
 
 });
