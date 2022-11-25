@@ -1,12 +1,24 @@
+import { Note } from "../../models/Note";
 import { makeSut } from "./factories/makeSut";
 
 describe("Delete Note Use Case", () => {
   //UNIT
   it("should change the status of note 'Active' to 'Trash'", async () => {
-    const { sut } = makeSut();
-    const MOCK_NOTE_ID = "1";
+    const { sut, databaseSpy } = makeSut();
+    const mockFakeNote: Note = {
+      id: "1",
+      author: "any_author",
+      content: "any_content",
+      title: "any_title",
+      status: "Active",
+      createAt: new Date("2020-01-10"),
+      updateAt: new Date("2020-01-10"),
+    };
 
-    const { trashedNote } = await sut.changeStatusNotesToTrashUseCase(MOCK_NOTE_ID);
+    const createdNote = await databaseSpy.create(mockFakeNote);
+    const { trashedNote } = await sut.changeStatusNotesToTrashUseCase(
+      String(createdNote?.id)
+    );
 
     expect(trashedNote?.status).toBe("Trash");
   });
@@ -21,17 +33,25 @@ describe("Delete Note Use Case", () => {
   });
 
   //INTEGRATION
-  it('should return error if repository thowrs an error', async () => {
-     const { sut } = makeSut();
-     const mockNotExistingId = "not exist id";
+  it("should return error if repository thowrs an error", async () => {
+    const { sut } = makeSut();
+    const mockNotExistingId = "not exist id";
 
-     const changeStatusNotesToTrashUseCaseNotExistingIdThrowError = await sut.changeStatusNotesToTrashUseCase(mockNotExistingId);
+    const changeStatusNotesToTrashUseCaseNotExistingIdThrowError =
+      await sut.changeStatusNotesToTrashUseCase(mockNotExistingId);
 
-     expect(changeStatusNotesToTrashUseCaseNotExistingIdThrowError.error?.message.message).toBe('note not exists!');
+    expect(
+      changeStatusNotesToTrashUseCaseNotExistingIdThrowError.error?.message
+        .message
+    ).toBe("note not exists!");
 
-     const mockNullId = ''
-     const changeStatusNotesToTrashUseCaseIdNotProvidedThrowError = await sut.changeStatusNotesToTrashUseCase(mockNullId);
+    const mockNullId = "";
+    const changeStatusNotesToTrashUseCaseIdNotProvidedThrowError =
+      await sut.changeStatusNotesToTrashUseCase(mockNullId);
 
-     expect(changeStatusNotesToTrashUseCaseIdNotProvidedThrowError.error?.message.message).toBe('parameter: id, not provided')
-   })
+    expect(
+      changeStatusNotesToTrashUseCaseIdNotProvidedThrowError.error?.message
+        .message
+    ).toBe("parameter: id, not provided");
+  });
 });

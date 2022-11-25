@@ -3,7 +3,7 @@ import {makeSut} from './factories/makeSut'
 
 describe("Get All Notes Use Case", () => {
   it("should get all notes of a one author", async () => {
-    const { sut } = makeSut();
+    const { sut, databaseSpy } = makeSut();
     const author = "any_author";
     const MOCK_AUTHOR_NOTES: Note[] = [
       {
@@ -26,6 +26,9 @@ describe("Get All Notes Use Case", () => {
       },
     ];
 
+
+    await databaseSpy.create(MOCK_AUTHOR_NOTES[0])
+    await databaseSpy.create(MOCK_AUTHOR_NOTES[1])
     const { notes } = await sut.getAllNotes(author);
 
     expect(notes).toEqual(MOCK_AUTHOR_NOTES);

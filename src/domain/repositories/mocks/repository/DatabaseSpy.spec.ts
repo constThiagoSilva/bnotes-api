@@ -11,7 +11,7 @@ describe("Database Spy", () => {
       title: "any_title",
     };
     const mockCreatedNote = {
-      id: "3",
+      id: "1",
       author: "any_author",
       content: "any_content",
       title: "any_title",
@@ -28,8 +28,14 @@ describe("Database Spy", () => {
   
   it('should change status of note to "trash"', async () => {
     const sut = new DatabaseSpy();
+    const mockFakeNewNote: NewNote = {
+      author: "any_auhtor",
+      content: "any_content",
+      title: "any_title",
+    };
     const mockIdNote = "1";
 
+    await sut.create(mockFakeNewNote)
     const noteChangedStatus = await sut.changeStatusToTrash(mockIdNote);
 
     expect(noteChangedStatus?.status).toBe("Trash");

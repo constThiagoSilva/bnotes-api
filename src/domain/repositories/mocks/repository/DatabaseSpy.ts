@@ -3,30 +3,14 @@ import { Note } from "../../../models/Note";
 import { NewNote } from "../../../usecases/saveNotesUseCase/interfaces/iNewNote";
 
 export class DatabaseSpy implements Database {
-  private notes: Note[] = [
-    {
-      id: "1",
-      author: "any_author",
-      content: "any_content",
-      title: "any_title",
-      status: "Active",
-      createAt: new Date("2022-10-31"),
-      updateAt: new Date("2022-10-31"),
-    },
-    {
-      id: "2",
-      author: "any_author",
-      content: "any_content",
-      title: "any_title",
-      status: "Active",
-      createAt: new Date("2022-10-31"),
-      updateAt: new Date("2022-10-31"),
-    },
-  ];
-  
+  private notes: Note[] = [];
+  private idGenerate = 0
+
   async create(newNote: NewNote): Promise<Note | null> {
+    this.idGenerate++
+
     const createdNote: Note = {
-      id: "3",
+      id: String(this.idGenerate),
       author: "any_author",
       content: "any_content",
       title: "any_title",
