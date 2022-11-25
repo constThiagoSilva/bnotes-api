@@ -41,7 +41,7 @@ describe("Save Notes Repository Spy", () => {
       title: "any_title",
       content: "any_content",
       updateAt: null,
-      createAt: new Date(),
+      createAt: new Date('2022-10-10'),
       status: "Active",
     };
 
