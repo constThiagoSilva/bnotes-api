@@ -1,7 +1,31 @@
 import { Note } from "../../../models/Note";
+import { NewNote } from "../../../usecases/saveNotesUseCase/interfaces/iNewNote";
 import { DatabaseSpy } from "./DatabaseSpy";
 
 describe("Database Spy", () => {
+  it('should create a new note', async () => {
+    const sut = new DatabaseSpy();
+    const mockFakeNewNote: NewNote = {
+      author: "any_auhtor",
+      content: "any_content",
+      title: "any_title",
+    };
+    const mockCreatedNote = {
+      id: "1",
+      author: "any_author",
+      content: "any_content",
+      title: "any_title",
+      status: "Active",
+      createAt: new Date("2022-10-31"),
+      updateAt: new Date("2022-10-31"),
+    }
+
+    const note = await sut.create(mockFakeNewNote)
+    
+
+    expect(note).toEqual(mockCreatedNote)
+  })
+  
   it('should change status of note to "trash"', async () => {
     const sut = new DatabaseSpy();
     const mockIdNote = "1";
