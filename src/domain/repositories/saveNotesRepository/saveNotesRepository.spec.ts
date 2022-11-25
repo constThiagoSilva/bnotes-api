@@ -40,6 +40,33 @@ class SaveNotesRepository implements ISaveNotesRepository {
   constructor(private saveNotesRepositorySpy: SaveNotesRepositorySpy) {}
 
   async saveNote(newNote: NewNote): Promise<{savedNote: Note | null, error: IError | null}> {
+    if (!newNote.author) {
+      return {
+        error: {
+          code: 500,
+          message: new ProvidedParamsError('author')
+        },
+        savedNote: null
+      }
+    } else if (!newNote.content) {
+      return {
+        error: {
+          code: 500,
+          message: new ProvidedParamsError('content')
+        },
+        savedNote: null
+      }
+    } else if (!newNote.title) {
+      return {
+        error: {
+          code: 500,
+          message: new ProvidedParamsError('title')
+        },
+        savedNote: null
+      }
+    }
+
+
     const savedNote = await this.saveNotesRepositorySpy.create(newNote);
 
     return {
@@ -73,7 +100,7 @@ describe("Save Notes Repository", () => {
 
     expect(savedNote).toEqual(storageNote);
   });
-  it('should return a 500 if params are not provided correctly', async () => {
+  it('should return a 500 if author param is not provided correctly', async () => {
     const saveNotesRepositorySpy = new SaveNotesRepositorySpy();
     const sut = new SaveNotesRepository(saveNotesRepositorySpy);
     const mockFakeIncorrectlyNewNote: NewNote = {
@@ -84,8 +111,36 @@ describe("Save Notes Repository", () => {
 
     const {error} = await sut.saveNote(mockFakeIncorrectlyNewNote)
 
-    expect(error?.code).toBe(400)
+    expect(error?.code).toBe(500)
     expect(error?.message.message).toBe('parameter: author, not provided')
+  })
+  it('should return a 500 if content param is not provided correctly', async () => {
+    const saveNotesRepositorySpy = new SaveNotesRepositorySpy();
+    const sut = new SaveNotesRepository(saveNotesRepositorySpy);
+    const mockFakeIncorrectlyNewNote: NewNote = {
+      author: "any_author",
+      content: "",
+      title: "any_title",
+    };
+
+    const {error} = await sut.saveNote(mockFakeIncorrectlyNewNote)
+
+    expect(error?.code).toBe(500)
+    expect(error?.message.message).toBe('parameter: content, not provided')
+  })
+  it('should return a 500 if content param is not provided correctly', async () => {
+    const saveNotesRepositorySpy = new SaveNotesRepositorySpy();
+    const sut = new SaveNotesRepository(saveNotesRepositorySpy);
+    const mockFakeIncorrectlyNewNote: NewNote = {
+      author: "any_author",
+      content: "any_content",
+      title: "",
+    };
+
+    const {error} = await sut.saveNote(mockFakeIncorrectlyNewNote)
+
+    expect(error?.code).toBe(500)
+    expect(error?.message.message).toBe('parameter: title, not provided')
   })
 
 });
