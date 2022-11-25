@@ -3,11 +3,6 @@ import { Note } from "../../../models/Note";
 import { NewNote } from "../../../usecases/saveNotesUseCase/interfaces/iNewNote";
 
 export class DatabaseSpy implements Database {
-  async findById(noteId: string): Promise<Note | null> {
-    const note = this.notes.find(note => note.id === noteId)
-
-    return note as Note
-  }
   private notes: Note[] = [];
   private idGenerate = 0
 
@@ -25,12 +20,12 @@ export class DatabaseSpy implements Database {
     }
 
     this.notes.push(createdNote)
-
+    
     return createdNote
   }
   async changeStatusToTrash(noteId: string): Promise<Note | null> {
     const note = this.notes.find((note) => note.id === noteId);
-
+    
     if (!note) {
       return null;
     }
@@ -43,12 +38,28 @@ export class DatabaseSpy implements Database {
     const notes = this.notes.filter(note => note.author === author)
 
     if (notes.length < 1 || !notes) return null
-
+    
     return notes
   }
-
+  async update(noteId: string, oldNote: NewNote): Promise<Note | null> {
+    return {
+        id: "1",
+        author: 'any_author',
+        content: "other_content",
+        title: "other_title",
+        status: "Active",
+        createAt: new Date("2022-10-31"),
+        updateAt: new Date("2022-10-31"),
+    }
+  }
+  
   //helper method to mock
   setNotes(notes: Note[]) {
     this.notes.push(...notes)
+  }
+  async findById(noteId: string): Promise<Note | null> {
+    const note = this.notes.find(note => note.id === noteId)
+  
+    return note as Note
   }
 }
