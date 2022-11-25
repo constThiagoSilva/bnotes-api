@@ -25,8 +25,8 @@ export class DatabaseSpy implements Database {
   ];
   
   async create(newNote: NewNote): Promise<Note | null> {
-    return {
-      id: "1",
+    const createdNote: Note = {
+      id: "3",
       author: "any_author",
       content: "any_content",
       title: "any_title",
@@ -34,6 +34,10 @@ export class DatabaseSpy implements Database {
       createAt: new Date("2022-10-31"),
       updateAt: new Date("2022-10-31"),
     }
+
+    this.notes.push(createdNote)
+
+    return createdNote
   }
   async changeStatusToTrash(noteId: string): Promise<Note | null> {
     const note = this.notes.find((note) => note.id === noteId);

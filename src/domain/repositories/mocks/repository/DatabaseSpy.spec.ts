@@ -11,7 +11,7 @@ describe("Database Spy", () => {
       title: "any_title",
     };
     const mockCreatedNote = {
-      id: "1",
+      id: "3",
       author: "any_author",
       content: "any_content",
       title: "any_title",
