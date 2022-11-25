@@ -1,9 +1,11 @@
+import { IError } from "../../helpers/errors/saveNotesUseCaseError/interfaces/IError";
+import { ProvidedParamsError } from "../../helpers/errors/saveNotesUseCaseError/ProviedParamsError";
 import { Note } from "../../models/Note";
 import { NewNote } from "../../usecases/saveNotesUseCase/interfaces/iNewNote";
 import { DatabaseSpy } from "../mocks/repository/DatabaseSpy";
 
 interface ISaveNotesRepository {
-  saveNote(newNote: NewNote): Promise<Note | null>;
+  saveNote(newNote: NewNote): Promise<{savedNote: Note | null, error: IError | null}>;
   getNoteById(noteId: string): Promise<Note | null>;
 }
 interface ISaveNotesRepositorySpy {
@@ -37,10 +39,16 @@ class SaveNotesRepositorySpy implements ISaveNotesRepositorySpy {
 class SaveNotesRepository implements ISaveNotesRepository {
   constructor(private saveNotesRepositorySpy: SaveNotesRepositorySpy) {}
 
-  async saveNote(newNote: NewNote): Promise<Note | null> {
-    const note = this.saveNotesRepositorySpy.create(newNote);
+  async saveNote(newNote: NewNote): Promise<{savedNote: Note | null, error: IError | null}> {
+    const savedNote = await this.saveNotesRepositorySpy.create(newNote);
 
-    return note;
+    return {
+      savedNote,
+      error: {
+        code: 400,
+        message: new ProvidedParamsError('author')
+      }
+    };
   }
   async getNoteById(noteId: string): Promise<Note | null> {
     const note = this.saveNotesRepositorySpy.findById(noteId)
@@ -59,10 +67,25 @@ describe("Save Notes Repository", () => {
       title: "any_title",
     };
 
-    const savedNote = await sut.saveNote(mockFakeNewNote);
+    const {savedNote} = await sut.saveNote(mockFakeNewNote);
     const savedNoteId = String(savedNote?.id);
     const storageNote = await sut.getNoteById(savedNoteId);
 
     expect(savedNote).toEqual(storageNote);
   });
+  it('should return a 500 if params are not provided correctly', async () => {
+    const saveNotesRepositorySpy = new SaveNotesRepositorySpy();
+    const sut = new SaveNotesRepository(saveNotesRepositorySpy);
+    const mockFakeIncorrectlyNewNote: NewNote = {
+      author: "",
+      content: "any_content",
+      title: "any_title",
+    };
+
+    const {error} = await sut.saveNote(mockFakeIncorrectlyNewNote)
+
+    expect(error?.code).toBe(400)
+    expect(error?.message.message).toBe('parameter: author, not provided')
+  })
+
 });
