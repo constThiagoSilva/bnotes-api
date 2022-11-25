@@ -114,9 +114,24 @@ describe("Database Spy", () => {
       updateAt: new Date("2022-10-31"),
     };
 
-    await sut.create(mockFakeNewNote);
-    const updatedNote = await sut.update(mockAuthor, mockUpdateNote);
+    const createdNote = await sut.create(mockFakeNewNote);
+    const updatedNote = await sut.update(String(createdNote?.id), mockUpdateNote);
 
     expect(updatedNote).toEqual(mockUpdatedNote);
   });
+  it('should return null if note not exists', async () => {
+    const sut = new DatabaseSpy();
+    const mockAuthor = "any_author";
+    const mockNotExistingNoteId = '1'
+    const mockUpdateNote: NewNote = {
+      author: mockAuthor,
+      content: "other_content",
+      title: "other_title",
+    };
+
+    const updatedNote = await sut.update(mockNotExistingNoteId, mockUpdateNote);
+
+    expect(updatedNote).toBeFalsy()
+    expect(updatedNote).toBe(null)
+  })
 });

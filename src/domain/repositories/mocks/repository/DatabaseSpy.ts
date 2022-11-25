@@ -42,15 +42,13 @@ export class DatabaseSpy implements Database {
     return notes
   }
   async update(noteId: string, oldNote: NewNote): Promise<Note | null> {
-    return {
-        id: "1",
-        author: 'any_author',
-        content: "other_content",
-        title: "other_title",
-        status: "Active",
-        createAt: new Date("2022-10-31"),
-        updateAt: new Date("2022-10-31"),
-    }
+    const note = this.notes.find((note) => note.id === noteId);
+
+    if (!note) return null
+
+    const updatedNote: Note = {...note, content: oldNote.content, title: oldNote.title} as Note
+
+    return updatedNote
   }
   
   //helper method to mock
