@@ -6,7 +6,7 @@ describe("Database Spy", () => {
   it('should create a new note', async () => {
     const sut = new DatabaseSpy();
     const mockFakeNewNote: NewNote = {
-      author: "any_auhtor",
+      author: "any_author",
       content: "any_content",
       title: "any_title",
     };
@@ -52,28 +52,34 @@ describe("Database Spy", () => {
   it("should return all notes of author", async () => {
     const sut = new DatabaseSpy();
     const mockAuthor = "correct_author";
+    const mockFakeNewNote: NewNote = {
+      author: mockAuthor,
+      content: "any_content",
+      title: "any_title",
+    };
     const mockNotes: Note[] = [
       {
-        id: "3",
+        id: "1",
         author: mockAuthor,
         content: "any_content",
         title: "any_title",
         status: "Active",
-        createAt: new Date("2020-01-10"),
-        updateAt: new Date("2020-01-10"),
+        createAt: new Date("2022-10-31"),
+        updateAt: new Date("2022-10-31"),
       },
       {
-        id: "4",
+        id: "2",
         author: mockAuthor,
         content: "any_content",
         title: "any_title",
         status: "Active",
-        createAt: new Date("2020-01-10"),
-        updateAt: new Date("2020-01-10"),
+        createAt: new Date("2022-10-31"),
+        updateAt: new Date("2022-10-31"),
       },
     ];
 
-    sut.setNotes(mockNotes)
+    await sut.create(mockFakeNewNote)
+    await sut.create(mockFakeNewNote)
     const notes = await sut.getAllNotes(mockAuthor);
 
     expect(notes).toEqual(mockNotes);

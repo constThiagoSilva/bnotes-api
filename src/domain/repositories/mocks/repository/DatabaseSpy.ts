@@ -11,9 +11,9 @@ export class DatabaseSpy implements Database {
 
     const createdNote: Note = {
       id: String(this.idGenerate),
-      author: "any_author",
-      content: "any_content",
-      title: "any_title",
+      author: newNote.author,
+      content: newNote.content,
+      title: newNote.title,
       status: "Active",
       createAt: new Date("2022-10-31"),
       updateAt: new Date("2022-10-31"),
