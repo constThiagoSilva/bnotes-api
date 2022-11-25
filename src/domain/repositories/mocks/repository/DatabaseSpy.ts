@@ -3,6 +3,11 @@ import { Note } from "../../../models/Note";
 import { NewNote } from "../../../usecases/saveNotesUseCase/interfaces/iNewNote";
 
 export class DatabaseSpy implements Database {
+  async findById(noteId: string): Promise<Note | null> {
+    const note = this.notes.find(note => note.id === noteId)
+
+    return note as Note
+  }
   private notes: Note[] = [];
   private idGenerate = 0
 

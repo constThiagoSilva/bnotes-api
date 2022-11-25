@@ -2,11 +2,11 @@ import { IError } from "../../helpers/errors/saveNotesUseCaseError/interfaces/IE
 import { ProvidedParamsError } from "../../helpers/errors/saveNotesUseCaseError/ProviedParamsError";
 import { Note } from "../../models/Note";
 import { NewNote } from "../../usecases/saveNotesUseCase/interfaces/iNewNote";
+import { DatabaseSpy } from "../mocks/repository/DatabaseSpy";
 import { ISaveNotesRepository } from "./interfaces/ISaveNotesRepository";
-import { ISaveNotesRepositorySpy } from "./mocks/interfaces/ISaveNotesRepositorySpy";
 
 export class SaveNotesRepository implements ISaveNotesRepository {
-  constructor(private saveNotesRepositorySpy: ISaveNotesRepositorySpy) {}
+  constructor(private databaseSpy: DatabaseSpy) {}
 
   async saveNote(
     newNote: NewNote
@@ -37,14 +37,14 @@ export class SaveNotesRepository implements ISaveNotesRepository {
       };
     }
 
-    const { note, error } = await this.saveNotesRepositorySpy.create(newNote);
+    const note = await this.databaseSpy.create(newNote);
 
-    if (error) {
-      return {
-        error: error,
-        savedNote: null,
-      };
-    }
+    // if (error) {
+    //   return {
+    //     error: error,
+    //     savedNote: null,
+    //   };
+    // }
 
     return {
       savedNote: note,
@@ -55,7 +55,7 @@ export class SaveNotesRepository implements ISaveNotesRepository {
     };
   }
   async getNoteById(noteId: string): Promise<Note | null> {
-    const note = await this.saveNotesRepositorySpy.findById(noteId);
+    const note = await this.databaseSpy.findById(noteId);
 
     return note;
   }
