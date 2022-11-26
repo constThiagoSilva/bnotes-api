@@ -1,56 +1,5 @@
-import { ProvidedParamsError } from "../../../domain/helpers/errors/saveNotesUseCaseError/ProviedParamsError";
-import { Note } from "../../../domain/models/Note";
-import { GetAllNotesRepository } from "../../../domain/repositories/getAllNotesRepository/GetAllNotesRepository";
-import { DatabaseSpy } from "../../../domain/repositories/mocks/repository/DatabaseSpy";
-import { SaveNotesRepository } from "../../../domain/repositories/saveNotesRepository/SaveNotesRepository";
-import { UpdateNotesRepository } from "../../../domain/repositories/updateNotesRepository/UpdateNotesRepository";
-import { GetAllNotesUseCase } from "../../../domain/usecases/getAllNotesUseCase/GetAllNotesUseCase";
-import { IGetAllNotesUseCase } from "../../../domain/usecases/getAllNotesUseCase/interfaces/IGetAllNotesUseCase";
-import { SaveNotesUseCase } from "../../../domain/usecases/saveNotesUseCase/SaveNotesUseCase";
 import { IHttpRequest } from "../../helpers/http/IHttpRequest";
-import { IHttpResponse } from "../../helpers/http/IHttpResponse";
-import { SaveNotesController } from "../saveNotesController/SaveNotesController";
-
-const makeSut = () => {
-  const databaseSpy = new DatabaseSpy();
-  const saveNotesController = new SaveNotesController(
-    new SaveNotesUseCase(
-      new SaveNotesRepository(databaseSpy),
-      new UpdateNotesRepository(databaseSpy)
-    )
-  );
-  const getAllNotesUseCase = new GetAllNotesUseCase(
-    new GetAllNotesRepository(databaseSpy)
-  );
-
-  const sut = new GetAllNotesController(getAllNotesUseCase);
-
-  return { sut, saveNotesController };
-};
-
-class GetAllNotesController {
-  constructor(private getAllNotesUseCase: IGetAllNotesUseCase) {}
-
-  async route(request: IHttpRequest): Promise<IHttpResponse> {
-    const { author } = request.params;
-
-    if (!author) return {
-      response: null,
-      code: 400,
-      error: {
-        message: new ProvidedParamsError('author')
-      }
-    }
-
-    const { notes } = await this.getAllNotesUseCase.getAllNotes(author);
-
-    return {
-      response: { notes },
-      code: 200,
-      error: null,
-    };
-  }
-}
+import {makeSut} from './factories/makeFactory'
 
 describe("Get All Notes Controller", () => {
   it("should return a list of notes in response, with 200 code", async () => {
@@ -96,20 +45,35 @@ describe("Get All Notes Controller", () => {
     const response = await sut.route(request);
 
     expect(response.response.notes).toEqual(responseResult);
-    expect(response.code).toBe(200)
+    expect(response.code).toBe(200);
   });
-  it('should return a 400 error if author is not provided', async () => {
-    const {sut} = makeSut()
+  it("should return a 400 error if author is not provided", async () => {
+    const { sut } = makeSut();
     const request: IHttpRequest = {
       body: null,
       params: {
-        author: null
-      }
-    }
+        author: null,
+      },
+    };
 
-    const response = await sut.route(request)
+    const response = await sut.route(request);
 
-    expect(response.error?.message.message).toBe('parameter: author, not provided')
-    expect(response.code).toBe(400)
-  })
+    expect(response.error?.message.message).toBe(
+      "parameter: author, not provided"
+    );
+    expect(response.code).toBe(400);
+  });
+  it("should return an error if dependecies return an error", async () => {
+    const { sut } = makeSut();
+    const request: IHttpRequest = {
+      params: {
+        author: "any_author",
+      },
+      body: null,
+    };
+
+    const response = await sut.route(request);
+
+    expect(response.error).toBeTruthy();
+  });
 });
