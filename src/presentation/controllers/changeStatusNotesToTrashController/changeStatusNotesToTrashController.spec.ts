@@ -1,64 +1,6 @@
 import { Note } from "../../../domain/models/Note";
-import { ChangeStatusNotesToTrashRepository } from "../../../domain/repositories/changeStatusNotesToTrashRepository/ChangeStatusNotesToTrashRepository";
-import { DatabaseSpy } from "../../../domain/repositories/mocks/repository/DatabaseSpy";
-import { IChangeStatusNotesToTrashUseCase } from "../../../domain/usecases/changeStatusNotesToTrashUseCase/interfaces/IChangeStatusNotesToTrashUseCase";
 import { IHttpRequest } from "../../helpers/http/IHttpRequest";
-import { IHttpResponse } from "../../helpers/http/IHttpResponse";
-import { IController } from "../interfaces/IController";
-import {ChangeStatusNotesToTrashUseCase} from '../../../domain/usecases/changeStatusNotesToTrashUseCase/ChangeStatusNotesToTrashUseCase'
-import { GetAllNotesUseCase } from "../../../domain/usecases/getAllNotesUseCase/GetAllNotesUseCase";
-import { GetAllNotesRepository } from "../../../domain/repositories/getAllNotesRepository/GetAllNotesRepository";
-import { SaveNotesController } from "../saveNotesController/SaveNotesController";
-import { SaveNotesUseCase } from "../../../domain/usecases/saveNotesUseCase/SaveNotesUseCase";
-import { SaveNotesRepository } from "../../../domain/repositories/saveNotesRepository/SaveNotesRepository";
-import { UpdateNotesRepository } from "../../../domain/repositories/updateNotesRepository/UpdateNotesRepository";
-import { ProvidedParamsError } from "../../../domain/helpers/errors/saveNotesUseCaseError/ProviedParamsError";
-
-class StatusNoteToTrashController implements IController {
-    constructor (private statusNoteToTrashUseCase: IChangeStatusNotesToTrashUseCase) {}
-
-  async route(request: IHttpRequest): Promise<IHttpResponse> {
-    const {noteId} = request.params
-
-    if (!noteId) return {
-        error: {
-            message: new ProvidedParamsError('noteId')
-        },
-        code: 400,
-        response: null
-    }
-
-    const {trashedNote, error} = await this.statusNoteToTrashUseCase.changeStatusNotesToTrashUseCase(noteId)
-
-    if (error) return {
-        error: error,
-        code: error.code,
-        response: null
-    }
-
-    return {
-      response: {trashedNote},
-      code: 200,
-      error: null,
-    };
-  }
-}
-
-const makeSut = () => {
-    const databaseSpy = new DatabaseSpy()
-    const changeStatusNotesToTrashRepository = new ChangeStatusNotesToTrashRepository(databaseSpy)
-    const changeStatusNotesToTrashUseCase = new ChangeStatusNotesToTrashUseCase(changeStatusNotesToTrashRepository)
-    const sut = new StatusNoteToTrashController(changeStatusNotesToTrashUseCase);
-
-    const saveNotesController = new SaveNotesController(
-        new SaveNotesUseCase(
-          new SaveNotesRepository(databaseSpy),
-          new UpdateNotesRepository(databaseSpy)
-        )
-      );
-
-    return {sut, saveNotesController}
-}
+import {makeSut} from './factories/sutFactory'
 
 describe("Change Status Note to Trash Controller", () => {
   it("should change status notes to trash and return a note in response, with code 200", async () => {
