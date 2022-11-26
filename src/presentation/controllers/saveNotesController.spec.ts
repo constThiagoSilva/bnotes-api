@@ -1,8 +1,23 @@
+import { DatabaseSpy } from "../../domain/repositories/mocks/repository/DatabaseSpy";
+import { SaveNotesRepository } from "../../domain/repositories/saveNotesRepository/SaveNotesRepository";
+import { UpdateNotesRepository } from "../../domain/repositories/updateNotesRepository/UpdateNotesRepository";
+import { SaveNotesUseCase } from "../../domain/usecases/saveNotesUseCase/SaveNotesUseCase";
 import { SaveNotesController } from "./SaveNotesController";
+
+const makeSut = () => {
+  const saveNotesController = new SaveNotesController(
+    new SaveNotesUseCase(
+      new SaveNotesRepository(new DatabaseSpy()),
+      new UpdateNotesRepository(new DatabaseSpy())
+    )
+  );
+
+  return saveNotesController;
+};
 
 describe("Save Notes Controller", () => {
   it("should return a created note in response, with 200 code", async () => {
-    const sut = new SaveNotesController();
+    const sut = makeSut();
     const requestBody = {
       body: {
         author: "any_author",
@@ -26,7 +41,7 @@ describe("Save Notes Controller", () => {
   });
 
   it("should return error 500 if author is not provided, and error with message: parameter: author, not provided", async () => {
-    const sut = new SaveNotesController();
+    const sut = makeSut();
     const requestBody = {
       body: {
         author: "",
@@ -43,7 +58,7 @@ describe("Save Notes Controller", () => {
     );
   });
   it("should return error 500 if title is not provided, and error with message: parameter: author, not provided", async () => {
-    const sut = new SaveNotesController();
+    const sut = makeSut();
     const requestBody = {
       body: {
         author: "any_author",
@@ -60,7 +75,7 @@ describe("Save Notes Controller", () => {
     );
   });
   it("should return error 500 if content is not provided, and error with message: parameter: author, not provided", async () => {
-    const sut = new SaveNotesController();
+    const sut = makeSut();
     const requestBody = {
       body: {
         author: "any_author",
