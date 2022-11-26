@@ -2,8 +2,9 @@ import { ProvidedParamsError } from "../../../domain/helpers/errors/saveNotesUse
 import { IGetAllNotesUseCase } from "../../../domain/usecases/getAllNotesUseCase/interfaces/IGetAllNotesUseCase";
 import { IHttpRequest } from "../../helpers/http/IHttpRequest";
 import { IHttpResponse } from "../../helpers/http/IHttpResponse";
+import { IController } from "../interfaces/IController";
 
-export class GetAllNotesController {
+export class GetAllNotesController implements IController{
   constructor(private getAllNotesUseCase: IGetAllNotesUseCase) {}
 
   async route(request: IHttpRequest): Promise<IHttpResponse> {

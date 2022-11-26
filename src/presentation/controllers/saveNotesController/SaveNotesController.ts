@@ -2,8 +2,9 @@ import { ISaveNotesUseCase } from "../../../domain/usecases/saveNotesUseCase/int
 import { IHttpRequest } from "../../helpers/http/IHttpRequest";
 import { IHttpResponse } from "../../helpers/http/IHttpResponse";
 import { ProvidedParamsError } from "../../../domain/helpers/errors/saveNotesUseCaseError/ProviedParamsError";
+import { IController } from "../interfaces/IController";
 
-export class SaveNotesController {
+export class SaveNotesController implements IController{
     constructor (private  saveNotesUseCase: ISaveNotesUseCase) {}
 
     async route(httpRequest: IHttpRequest): Promise<IHttpResponse> {
