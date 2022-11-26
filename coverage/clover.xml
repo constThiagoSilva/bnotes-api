@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1669495758675" clover="3.2.0">
-  <project timestamp="1669495758676" name="All files">
+<coverage generated="1669496237543" clover="3.2.0">
+  <project timestamp="1669496237543" name="All files">
     <metrics statements="529" coveredstatements="529" conditionals="84" coveredconditionals="84" methods="32" coveredmethods="32" elements="645" coveredelements="645" complexity="0" loc="529" ncloc="529" packages="16" files="17" classes="17"/>
     <package name="domain.helpers.errors.saveNotesUseCaseError">
       <metrics statements="29" coveredstatements="29" conditionals="9" coveredconditionals="9" methods="2" coveredmethods="2"/>
@@ -8,8 +8,8 @@
         <metrics statements="5" coveredstatements="5" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="3" count="30" type="stmt"/>
-        <line num="4" count="30" type="stmt"/>
+        <line num="3" count="31" type="stmt"/>
+        <line num="4" count="31" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
       </file>
       <file name="ThrowSaveNotesError.ts" path="/home/thiago/estudo/node/projects/bnotes-api/src/domain/helpers/errors/saveNotesUseCaseError/ThrowSaveNotesError.ts">
@@ -159,11 +159,11 @@
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
-        <line num="5" count="42" type="cond" truecount="1" falsecount="0"/>
-        <line num="6" count="42" type="stmt"/>
-        <line num="7" count="42" type="stmt"/>
-        <line num="8" count="42" type="stmt"/>
-        <line num="9" count="42" type="cond" truecount="1" falsecount="0"/>
+        <line num="5" count="43" type="cond" truecount="1" falsecount="0"/>
+        <line num="6" count="43" type="stmt"/>
+        <line num="7" count="43" type="stmt"/>
+        <line num="8" count="43" type="stmt"/>
+        <line num="9" count="43" type="cond" truecount="1" falsecount="0"/>
         <line num="10" count="20" type="stmt"/>
         <line num="11" count="20" type="stmt"/>
         <line num="12" count="20" type="stmt"/>
@@ -180,7 +180,7 @@
         <line num="23" count="20" type="stmt"/>
         <line num="24" count="20" type="stmt"/>
         <line num="25" count="20" type="stmt"/>
-        <line num="26" count="42" type="cond" truecount="1" falsecount="0"/>
+        <line num="26" count="43" type="cond" truecount="1" falsecount="0"/>
         <line num="27" count="6" type="cond" truecount="1" falsecount="0"/>
         <line num="28" count="6" type="stmt"/>
         <line num="29" count="6" type="cond" truecount="1" falsecount="0"/>
@@ -191,14 +191,14 @@
         <line num="34" count="3" type="stmt"/>
         <line num="35" count="3" type="stmt"/>
         <line num="36" count="3" type="stmt"/>
-        <line num="37" count="42" type="cond" truecount="1" falsecount="0"/>
+        <line num="37" count="43" type="cond" truecount="1" falsecount="0"/>
         <line num="38" count="7" type="cond" truecount="1" falsecount="0"/>
         <line num="39" count="7" type="stmt"/>
         <line num="40" count="7" type="cond" truecount="3" falsecount="0"/>
         <line num="41" count="4" type="stmt"/>
         <line num="42" count="4" type="stmt"/>
         <line num="43" count="4" type="stmt"/>
-        <line num="44" count="42" type="cond" truecount="1" falsecount="0"/>
+        <line num="44" count="43" type="cond" truecount="1" falsecount="0"/>
         <line num="45" count="4" type="cond" truecount="1" falsecount="0"/>
         <line num="46" count="4" type="stmt"/>
         <line num="47" count="4" type="cond" truecount="2" falsecount="0"/>
@@ -207,17 +207,17 @@
         <line num="50" count="3" type="stmt"/>
         <line num="51" count="3" type="stmt"/>
         <line num="52" count="3" type="stmt"/>
-        <line num="53" count="42" type="stmt"/>
-        <line num="54" count="42" type="stmt"/>
-        <line num="55" count="42" type="cond" truecount="1" falsecount="0"/>
+        <line num="53" count="43" type="stmt"/>
+        <line num="54" count="43" type="stmt"/>
+        <line num="55" count="43" type="cond" truecount="1" falsecount="0"/>
         <line num="56" count="1" type="stmt"/>
         <line num="57" count="1" type="stmt"/>
-        <line num="58" count="42" type="cond" truecount="1" falsecount="0"/>
+        <line num="58" count="43" type="cond" truecount="1" falsecount="0"/>
         <line num="59" count="9" type="cond" truecount="1" falsecount="0"/>
         <line num="60" count="9" type="stmt"/>
         <line num="61" count="9" type="stmt"/>
         <line num="62" count="9" type="stmt"/>
-        <line num="63" count="42" type="stmt"/>
+        <line num="63" count="43" type="stmt"/>
       </file>
     </package>
     <package name="domain.repositories.saveNotesRepository">

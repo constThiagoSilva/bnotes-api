@@ -1,3 +1,4 @@
+import { ProvidedParamsError } from "../../../domain/helpers/errors/saveNotesUseCaseError/ProviedParamsError";
 import { Note } from "../../../domain/models/Note";
 import { GetAllNotesRepository } from "../../../domain/repositories/getAllNotesRepository/GetAllNotesRepository";
 import { DatabaseSpy } from "../../../domain/repositories/mocks/repository/DatabaseSpy";
@@ -32,6 +33,14 @@ class GetAllNotesController {
 
   async route(request: IHttpRequest): Promise<IHttpResponse> {
     const { author } = request.params;
+
+    if (!author) return {
+      response: null,
+      code: 400,
+      error: {
+        message: new ProvidedParamsError('author')
+      }
+    }
 
     const { notes } = await this.getAllNotesUseCase.getAllNotes(author);
 
@@ -89,4 +98,18 @@ describe("Get All Notes Controller", () => {
     expect(response.response.notes).toEqual(responseResult);
     expect(response.code).toBe(200)
   });
+  it('should return a 400 error if author is not provided', async () => {
+    const {sut} = makeSut()
+    const request: IHttpRequest = {
+      body: null,
+      params: {
+        author: null
+      }
+    }
+
+    const response = await sut.route(request)
+
+    expect(response.error?.message.message).toBe('parameter: author, not provided')
+    expect(response.code).toBe(400)
+  })
 });
