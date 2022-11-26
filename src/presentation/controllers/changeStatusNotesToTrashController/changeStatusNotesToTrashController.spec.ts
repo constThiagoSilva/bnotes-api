@@ -28,7 +28,13 @@ class StatusNoteToTrashController implements IController {
         response: null
     }
 
-    const {trashedNote} = await this.statusNoteToTrashUseCase.changeStatusNotesToTrashUseCase(noteId)
+    const {trashedNote, error} = await this.statusNoteToTrashUseCase.changeStatusNotesToTrashUseCase(noteId)
+
+    if (error) return {
+        error: error,
+        code: error.code,
+        response: null
+    }
 
     return {
       response: {trashedNote},
@@ -88,7 +94,7 @@ describe("Change Status Note to Trash Controller", () => {
     expect(response.code).toBe(200)
   });
   it('should return and error with code 400 if note id is note provided', async () => {
-    const {sut,saveNotesController} = makeSut()
+    const {sut} = makeSut()
     const request: IHttpRequest = {
       body: null,
       params: {
@@ -101,5 +107,18 @@ describe("Change Status Note to Trash Controller", () => {
     expect(response.error).toBeTruthy();
     expect(response.error?.message.message).toBe("parameter: noteId, not provided");
     expect(response.code).toBe(400)
+  })
+  it('should return an error if dependecies disparates an error', async () => {
+    const {sut} = makeSut()
+    const request: IHttpRequest = {
+      body: null,
+      params: {
+        noteId: "1",
+      },
+    };
+
+    const response = await sut.route(request);
+
+    expect(response.error).toBeTruthy()
   })
 });
