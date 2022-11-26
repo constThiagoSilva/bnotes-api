@@ -36,7 +36,7 @@ describe("Save Notes Use Case", () => {
   it('should update a exist note', async () => {
     const { sut } = makeSut();
     const aNewNote: NewNote = {
-      author: "any_author",
+      author: "same_author",
       title: "any_title",
       content: "any_content",
     };
