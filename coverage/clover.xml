@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1669496916290" clover="3.2.0">
-  <project timestamp="1669496916290" name="All files">
+<coverage generated="1669503369853" clover="3.2.0">
+  <project timestamp="1669503369853" name="All files">
     <metrics statements="592" coveredstatements="592" conditionals="87" coveredconditionals="87" methods="35" coveredmethods="35" elements="714" coveredelements="714" complexity="0" loc="592" ncloc="592" packages="18" files="19" classes="19"/>
     <package name="domain.helpers.errors.saveNotesUseCaseError">
       <metrics statements="29" coveredstatements="29" conditionals="9" coveredconditionals="9" methods="2" coveredmethods="2"/>
