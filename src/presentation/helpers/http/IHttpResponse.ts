@@ -1,8 +1,7 @@
-import { Note } from "../../../domain/models/Note";
 import { IHttpResponseError } from './errors/IHttpResponseError'
 
 export interface IHttpResponse {
-  response: { note: Note | null };
+  response: any;
   code: number;
   error: IHttpResponseError | null;
 }
