@@ -1,19 +1,4 @@
-import { DatabaseSpy } from "../../domain/repositories/mocks/repository/DatabaseSpy";
-import { SaveNotesRepository } from "../../domain/repositories/saveNotesRepository/SaveNotesRepository";
-import { UpdateNotesRepository } from "../../domain/repositories/updateNotesRepository/UpdateNotesRepository";
-import { SaveNotesUseCase } from "../../domain/usecases/saveNotesUseCase/SaveNotesUseCase";
-import { SaveNotesController } from "./SaveNotesController";
-
-const makeSut = () => {
-  const saveNotesController = new SaveNotesController(
-    new SaveNotesUseCase(
-      new SaveNotesRepository(new DatabaseSpy()),
-      new UpdateNotesRepository(new DatabaseSpy())
-    )
-  );
-
-  return saveNotesController;
-};
+import {makeSut} from './factories/sutFactory'
 
 describe("Save Notes Controller", () => {
   it("should return a created note in response, with 200 code", async () => {
