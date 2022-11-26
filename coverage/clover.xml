@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1669493572752" clover="3.2.0">
-  <project timestamp="1669493572752" name="All files">
-    <metrics statements="533" coveredstatements="533" conditionals="81" coveredconditionals="81" methods="32" coveredmethods="32" elements="646" coveredelements="646" complexity="0" loc="533" ncloc="533" packages="16" files="17" classes="17"/>
+<coverage generated="1669494883958" clover="3.2.0">
+  <project timestamp="1669494883958" name="All files">
+    <metrics statements="529" coveredstatements="529" conditionals="81" coveredconditionals="81" methods="32" coveredmethods="32" elements="642" coveredelements="642" complexity="0" loc="529" ncloc="529" packages="16" files="17" classes="17"/>
     <package name="domain.helpers.errors.saveNotesUseCaseError">
       <metrics statements="29" coveredstatements="29" conditionals="9" coveredconditionals="9" methods="2" coveredmethods="2"/>
       <file name="ProviedParamsError.ts" path="/home/thiago/estudo/node/projects/bnotes-api/src/domain/helpers/errors/saveNotesUseCaseError/ProviedParamsError.ts">
@@ -551,65 +551,61 @@
       </file>
     </package>
     <package name="presentation.controllers.saveNotesController">
-      <metrics statements="56" coveredstatements="56" conditionals="8" coveredconditionals="8" methods="2" coveredmethods="2"/>
+      <metrics statements="52" coveredstatements="52" conditionals="8" coveredconditionals="8" methods="2" coveredmethods="2"/>
       <file name="SaveNotesController.ts" path="/home/thiago/estudo/node/projects/bnotes-api/src/presentation/controllers/saveNotesController/SaveNotesController.ts">
-        <metrics statements="56" coveredstatements="56" conditionals="8" coveredconditionals="8" methods="2" coveredmethods="2"/>
+        <metrics statements="52" coveredstatements="52" conditionals="8" coveredconditionals="8" methods="2" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
         <line num="6" count="1" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
+        <line num="7" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="8" count="1" type="stmt"/>
-        <line num="9" count="1" type="stmt"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="11" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="12" count="1" type="stmt"/>
-        <line num="13" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="14" count="4" type="stmt"/>
-        <line num="15" count="4" type="stmt"/>
-        <line num="16" count="4" type="cond" truecount="1" falsecount="0"/>
+        <line num="9" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="10" count="4" type="stmt"/>
+        <line num="11" count="4" type="stmt"/>
+        <line num="12" count="4" type="cond" truecount="1" falsecount="0"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
         <line num="17" count="1" type="stmt"/>
         <line num="18" count="1" type="stmt"/>
         <line num="19" count="1" type="stmt"/>
         <line num="20" count="1" type="stmt"/>
         <line num="21" count="1" type="stmt"/>
-        <line num="22" count="1" type="stmt"/>
+        <line num="22" count="4" type="cond" truecount="2" falsecount="0"/>
         <line num="23" count="1" type="stmt"/>
         <line num="24" count="1" type="stmt"/>
         <line num="25" count="1" type="stmt"/>
-        <line num="26" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="26" count="1" type="stmt"/>
         <line num="27" count="1" type="stmt"/>
         <line num="28" count="1" type="stmt"/>
         <line num="29" count="1" type="stmt"/>
         <line num="30" count="1" type="stmt"/>
         <line num="31" count="1" type="stmt"/>
-        <line num="32" count="1" type="stmt"/>
+        <line num="32" count="3" type="cond" truecount="2" falsecount="0"/>
         <line num="33" count="1" type="stmt"/>
         <line num="34" count="1" type="stmt"/>
         <line num="35" count="1" type="stmt"/>
-        <line num="36" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="36" count="1" type="stmt"/>
         <line num="37" count="1" type="stmt"/>
         <line num="38" count="1" type="stmt"/>
         <line num="39" count="1" type="stmt"/>
         <line num="40" count="1" type="stmt"/>
         <line num="41" count="1" type="stmt"/>
         <line num="42" count="1" type="stmt"/>
-        <line num="43" count="1" type="stmt"/>
+        <line num="43" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="44" count="1" type="stmt"/>
         <line num="45" count="1" type="stmt"/>
         <line num="46" count="1" type="stmt"/>
-        <line num="47" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="47" count="1" type="stmt"/>
         <line num="48" count="1" type="stmt"/>
         <line num="49" count="1" type="stmt"/>
         <line num="50" count="1" type="stmt"/>
         <line num="51" count="1" type="stmt"/>
         <line num="52" count="1" type="stmt"/>
-        <line num="53" count="1" type="stmt"/>
-        <line num="54" count="1" type="stmt"/>
-        <line num="55" count="1" type="stmt"/>
-        <line num="56" count="1" type="stmt"/>
       </file>
     </package>
     <package name="presentation.controllers.saveNotesController.factories">

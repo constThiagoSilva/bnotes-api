@@ -1,14 +1,16 @@
+import { IHttpRequest } from '../../helpers/http/IHttpRequest';
 import {makeSut} from './factories/sutFactory'
 
 describe("Save Notes Controller", () => {
   it("should return a created note in response, with 200 code", async () => {
     const sut = makeSut();
-    const requestBody = {
+    const requestBody: IHttpRequest = {
       body: {
         author: "any_author",
         title: "any_title",
         content: "any_content",
       },
+      params: null
     };
     const responseBody = {
       id: "1",
@@ -27,12 +29,13 @@ describe("Save Notes Controller", () => {
 
   it("should return error 500 if author is not provided, and error with message: parameter: author, not provided", async () => {
     const sut = makeSut();
-    const requestBody = {
+    const requestBody: IHttpRequest = {
       body: {
         author: "",
         title: "any_title",
         content: "any_content",
       },
+      params: null
     };
 
     const response = await sut.route(requestBody);
@@ -44,12 +47,13 @@ describe("Save Notes Controller", () => {
   });
   it("should return error 500 if title is not provided, and error with message: parameter: author, not provided", async () => {
     const sut = makeSut();
-    const requestBody = {
+    const requestBody: IHttpRequest = {
       body: {
         author: "any_author",
         title: "",
         content: "any_content",
       },
+      params: null
     };
 
     const response = await sut.route(requestBody);
@@ -61,12 +65,13 @@ describe("Save Notes Controller", () => {
   });
   it("should return error 500 if content is not provided, and error with message: parameter: author, not provided", async () => {
     const sut = makeSut();
-    const requestBody = {
+    const requestBody: IHttpRequest = {
       body: {
         author: "any_author",
         title: "any_title",
         content: "",
       },
+      params: null
     };
 
     const response = await sut.route(requestBody);
