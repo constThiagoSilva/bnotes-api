@@ -5,3 +5,7 @@ export const instanceDatabaseSpy = () => {
 
     return databaseSpy
 }
+
+const databaseSpy = instanceDatabaseSpy()
+
+export {databaseSpy}
