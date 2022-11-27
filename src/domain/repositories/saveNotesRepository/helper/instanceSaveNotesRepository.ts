@@ -1,8 +1,12 @@
-import { instanceDatabaseSpy } from "../../mocks/repository/helper/instanceDatabaseSpy";
+import { databaseSpy, instanceDatabaseSpy } from "../../mocks/repository/helper/instanceDatabaseSpy";
 import { SaveNotesRepository } from "../SaveNotesRepository";
 
 export const instanceSaveNotesRepository = () => {
-  const saveNotesRepository = new SaveNotesRepository(instanceDatabaseSpy());
+  const saveNotesRepository = new SaveNotesRepository(databaseSpy);
 
   return saveNotesRepository;
 };
+
+const saveNotesRepository = instanceDatabaseSpy()
+
+export {saveNotesRepository}
