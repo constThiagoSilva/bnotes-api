@@ -7,6 +7,6 @@ export const instanceSaveNotesRepository = () => {
   return saveNotesRepository;
 };
 
-const saveNotesRepository = instanceDatabaseSpy()
+const saveNotesRepository = instanceSaveNotesRepository()
 
 export {saveNotesRepository}
