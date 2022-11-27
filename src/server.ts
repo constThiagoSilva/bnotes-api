@@ -1,5 +1,6 @@
 import express, { Router } from "express";
 import { DatabaseSpy } from "./domain/repositories/mocks/repository/DatabaseSpy";
+import { statusNoteToTrashControllert } from "./presentation/controllers/changeStatusNotesToTrashController/helper/instanceChangeStatusNotesToTrashController";
 import { getAllNotesController } from "./presentation/controllers/getAllNotesController/helper/instanceGetAllNotesController";
 import { saveNotesController } from "./presentation/controllers/saveNotesController/helper/instanceSaveNotesController";
 
@@ -16,6 +17,11 @@ router.post("/notes/save", async (request, response) => {
 });
 router.get('/notes/all/:author', async (request, response) => {
   const result = await getAllNotesController.route(request)
+
+  return response.status(result.code).json(result.response)
+})
+router.patch('/notes/trash/:noteId', async (request, response) => {
+  const result = await statusNoteToTrashControllert.route(request)
 
   return response.status(result.code).json(result.response)
 })
