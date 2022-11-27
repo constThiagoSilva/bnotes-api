@@ -48,6 +48,17 @@ export class DatabaseSpy implements Database {
 
     const updatedNote: Note = {...note, content: oldNote.content, title: oldNote.title} as Note
 
+    const newNotes = this.notes.map(note => {
+      if (note.id === noteId) {
+        return {
+          ...note,
+          content: oldNote.content, title: oldNote.title
+        } as Note
+      }
+    })
+
+    this.notes = [...newNotes as Note[]]
+
     return updatedNote
   }
   

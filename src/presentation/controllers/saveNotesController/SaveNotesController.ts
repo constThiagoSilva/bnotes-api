@@ -8,7 +8,7 @@ export class SaveNotesController implements IController{
     constructor (private  saveNotesUseCase: ISaveNotesUseCase) {}
 
     async route(httpRequest: IHttpRequest): Promise<IHttpResponse> {
-      const { author, title, content } = httpRequest.body;
+      const { author, title, content, noteId } = httpRequest.body;
   
       if (!author) {
         return {
@@ -42,7 +42,7 @@ export class SaveNotesController implements IController{
         };
       }
   
-      const { note } = await this.saveNotesUseCase.save({ author, content, title });
+      const { note } = await this.saveNotesUseCase.save({ author, content, title }, noteId);
   
       return {
         response: { note },
