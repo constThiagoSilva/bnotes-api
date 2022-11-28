@@ -11,7 +11,7 @@ describe("Save Notes Controller", () => {
         title: "any_title",
         content: "any_content",
       },
-      params: null,
+      params: {},
     };
     const responseBody = {
       id: "1",
@@ -35,7 +35,7 @@ describe("Save Notes Controller", () => {
         title: "any_title",
         content: "any_content",
       },
-      params: null,
+      params: {},
     };
     const updateNote: IHttpRequest = {
       body: {
@@ -52,7 +52,7 @@ describe("Save Notes Controller", () => {
       error: null,
       response: {
         note: {
-          id: "3",
+          id: "1",
           author: "any_author",
           title: "other_title",
           content: "other_content",
@@ -78,7 +78,7 @@ describe("Save Notes Controller", () => {
         title: "any_title",
         content: "any_content",
       },
-      params: null,
+      params: {},
     };
 
     const response = await sut.route(requestBody);
@@ -96,7 +96,7 @@ describe("Save Notes Controller", () => {
         title: "",
         content: "any_content",
       },
-      params: null,
+      params: {},
     };
 
     const response = await sut.route(requestBody);
@@ -114,7 +114,7 @@ describe("Save Notes Controller", () => {
         title: "any_title",
         content: "",
       },
-      params: null,
+      params: {},
     };
 
     const response = await sut.route(requestBody);
