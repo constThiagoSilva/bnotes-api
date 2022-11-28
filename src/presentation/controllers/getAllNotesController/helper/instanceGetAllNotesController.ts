@@ -1,4 +1,4 @@
-import { getAllNotesUseCase } from "../../../../domain/usecases/getAllNotesUseCase/helper/instanceGetAllNotesUseCase";
+import { getAllNotesUseCase } from "../../../../core/usecases/getAllNotesUseCase/helper/instanceGetAllNotesUseCase";
 import { GetAllNotesController } from "../GetAllNotesController";
 
 export const instanceGetAllNotesController = () => {

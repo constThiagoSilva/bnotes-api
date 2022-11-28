@@ -1,7 +1,7 @@
-import { ISaveNotesUseCase } from "../../../domain/usecases/saveNotesUseCase/interfaces/usecases/ISaveNotesUseCase";
+import { ISaveNotesUseCase } from "../../../core/usecases/saveNotesUseCase/interfaces/usecases/ISaveNotesUseCase";
 import { IHttpRequest } from "../../helpers/http/IHttpRequest";
 import { IHttpResponse } from "../../helpers/http/IHttpResponse";
-import { ProvidedParamsError } from "../../../domain/helpers/errors/saveNotesUseCaseError/ProvidedParamsError";
+import { ProvidedParamsError } from "../../../core/helpers/errors/saveNotesUseCaseError/ProvidedParamsError";
 import { IController } from "../interfaces/IController";
 
 export class SaveNotesController implements IController{

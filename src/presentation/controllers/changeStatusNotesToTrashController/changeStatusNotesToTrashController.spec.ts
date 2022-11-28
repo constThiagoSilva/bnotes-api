@@ -1,4 +1,4 @@
-import { Note } from "../../../domain/models/Note";
+import { Note } from "../../../core/models/Note";
 import { IHttpRequest } from "../../helpers/http/IHttpRequest";
 import { saveNotesController } from "../saveNotesController/helper/instanceSaveNotesController";
 import {makeSut} from './factories/sutFactory'

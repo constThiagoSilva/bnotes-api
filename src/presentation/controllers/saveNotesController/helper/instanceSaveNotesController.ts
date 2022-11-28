@@ -1,4 +1,4 @@
-import { saveNotesUseCase } from "../../../../domain/usecases/saveNotesUseCase/helper/instanceSaveNotesUseCase";
+import { saveNotesUseCase } from "../../../../core/usecases/saveNotesUseCase/helper/instanceSaveNotesUseCase";
 import { SaveNotesController } from "../SaveNotesController";
 
 export const instanceSaveNotesController = () => {

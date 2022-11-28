@@ -1,4 +1,4 @@
-import { changeStatusNotesToTrashUseCase } from "../../../../domain/usecases/changeStatusNotesToTrashUseCase/helper/instanceChangeStatusNotesToTrashUseCase";
+import { changeStatusNotesToTrashUseCase } from "../../../../core/usecases/changeStatusNotesToTrashUseCase/helper/instanceChangeStatusNotesToTrashUseCase";
 import { ChangeStatusNoteToTrashController } from "../ChangeStatusNotesToTrash";
 
 export const instanceStatusNoteToTrashController = () => {

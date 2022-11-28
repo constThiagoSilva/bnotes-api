@@ -1,5 +1,5 @@
 TN:
-SF:src/domain/helpers/errors/saveNotesUseCaseError/ProvidedParamsError.ts
+SF:src/core/helpers/errors/saveNotesUseCaseError/ProvidedParamsError.ts
 FN:2,ProvidedParamsError
 FNF:1
 FNH:1
@@ -16,7 +16,7 @@ BRF:1
 BRH:1
 end_of_record
 TN:
-SF:src/domain/helpers/errors/saveNotesUseCaseError/ThrowSaveNotesError.ts
+SF:src/core/helpers/errors/saveNotesUseCaseError/ThrowSaveNotesError.ts
 FN:5,ThrowSaveNotesError
 FNF:1
 FNH:1
@@ -59,7 +59,7 @@ BRF:8
 BRH:8
 end_of_record
 TN:
-SF:src/domain/repositories/changeStatusNotesToTrashRepository/ChangeStatusNotesToTrashRepository.ts
+SF:src/core/repositories/changeStatusNotesToTrashRepository/ChangeStatusNotesToTrashRepository.ts
 FN:10,ChangeStatusNotesToTrashRepository
 FN:12,changeStatusToTrash
 FNF:2
@@ -119,7 +119,7 @@ BRF:5
 BRH:5
 end_of_record
 TN:
-SF:src/domain/repositories/changeStatusNotesToTrashRepository/helper/instanceChangeStatusNotesToTrashRepository.ts
+SF:src/core/repositories/changeStatusNotesToTrashRepository/helper/instanceChangeStatusNotesToTrashRepository.ts
 FN:4,instanceChangeStatusNotesToTrashRepository
 FNF:1
 FNH:1
@@ -145,7 +145,7 @@ BRF:1
 BRH:1
 end_of_record
 TN:
-SF:src/domain/repositories/getAllNotesRepository/GetAllNotesRepository.ts
+SF:src/core/repositories/getAllNotesRepository/GetAllNotesRepository.ts
 FN:8,GetAllNotesRepository
 FN:10,getAllNotes
 FNF:2
@@ -204,7 +204,7 @@ BRF:5
 BRH:5
 end_of_record
 TN:
-SF:src/domain/repositories/getAllNotesRepository/factories/makeSut.ts
+SF:src/core/repositories/getAllNotesRepository/factories/makeSut.ts
 FN:3,makeSut
 FNF:1
 FNH:1
@@ -223,7 +223,7 @@ BRF:1
 BRH:1
 end_of_record
 TN:
-SF:src/domain/repositories/getAllNotesRepository/helper/instanceGetAllNotesRepository.ts
+SF:src/core/repositories/getAllNotesRepository/helper/instanceGetAllNotesRepository.ts
 FN:4,instanceGetAllNotesRepository
 FNF:1
 FNH:1
@@ -247,7 +247,7 @@ BRF:1
 BRH:1
 end_of_record
 TN:
-SF:src/domain/repositories/mocks/repository/DatabaseSpy.ts
+SF:src/core/repositories/mocks/repository/DatabaseSpy.ts
 FN:5,DatabaseSpy
 FN:9,create
 FN:26,changeStatusToTrash
@@ -365,7 +365,7 @@ BRF:19
 BRH:19
 end_of_record
 TN:
-SF:src/domain/repositories/mocks/repository/helper/instanceDatabaseSpy.ts
+SF:src/core/repositories/mocks/repository/helper/instanceDatabaseSpy.ts
 FN:3,instanceDatabaseSpy
 FNF:1
 FNH:1
@@ -388,7 +388,7 @@ BRF:1
 BRH:1
 end_of_record
 TN:
-SF:src/domain/repositories/saveNotesRepository/SaveNotesRepository.ts
+SF:src/core/repositories/saveNotesRepository/SaveNotesRepository.ts
 FN:9,SaveNotesRepository
 FN:11,saveNote
 FN:57,getNoteById
@@ -474,7 +474,7 @@ BRF:9
 BRH:9
 end_of_record
 TN:
-SF:src/domain/repositories/saveNotesRepository/helper/instanceSaveNotesRepository.ts
+SF:src/core/repositories/saveNotesRepository/helper/instanceSaveNotesRepository.ts
 FN:4,instanceSaveNotesRepository
 FNF:1
 FNH:1
@@ -499,7 +499,7 @@ BRF:1
 BRH:1
 end_of_record
 TN:
-SF:src/domain/repositories/updateNotesRepository/UpdateNotesRepository.ts
+SF:src/core/repositories/updateNotesRepository/UpdateNotesRepository.ts
 FN:9,UpdateNotesRepository
 FN:11,updateNote
 FNF:2
@@ -568,7 +568,7 @@ BRF:8
 BRH:8
 end_of_record
 TN:
-SF:src/domain/repositories/updateNotesRepository/factories/sutFactory.ts
+SF:src/core/repositories/updateNotesRepository/factories/sutFactory.ts
 FN:4,makeSut
 FNF:1
 FNH:1
@@ -589,7 +589,7 @@ BRF:1
 BRH:1
 end_of_record
 TN:
-SF:src/domain/repositories/updateNotesRepository/helper/instanceUpdateNotesRepository.ts
+SF:src/core/repositories/updateNotesRepository/helper/instanceUpdateNotesRepository.ts
 FN:4,instanceUpdateNotesRepository
 FNF:1
 FNH:1
@@ -613,7 +613,7 @@ BRF:1
 BRH:1
 end_of_record
 TN:
-SF:src/domain/usecases/changeStatusNotesToTrashUseCase/ChangeStatusNotesToTrashUseCase.ts
+SF:src/core/usecases/changeStatusNotesToTrashUseCase/ChangeStatusNotesToTrashUseCase.ts
 FN:8,ChangeStatusNotesToTrashUseCase
 FN:10,changeStatusNotesToTrashUseCase
 FNF:2
@@ -668,7 +668,7 @@ BRF:5
 BRH:5
 end_of_record
 TN:
-SF:src/domain/usecases/changeStatusNotesToTrashUseCase/factories/makeSut.ts
+SF:src/core/usecases/changeStatusNotesToTrashUseCase/factories/makeSut.ts
 FN:3,makeSut
 FNF:1
 FNH:1
@@ -687,7 +687,7 @@ BRF:1
 BRH:1
 end_of_record
 TN:
-SF:src/domain/usecases/changeStatusNotesToTrashUseCase/helper/instanceChangeStatusNotesToTrashUseCase.ts
+SF:src/core/usecases/changeStatusNotesToTrashUseCase/helper/instanceChangeStatusNotesToTrashUseCase.ts
 FN:4,instanceChangeStatusNotesToTrashUseCase
 FNF:1
 FNH:1
@@ -714,7 +714,7 @@ BRF:1
 BRH:1
 end_of_record
 TN:
-SF:src/domain/usecases/getAllNotesUseCase/GetAllNotesUseCase.ts
+SF:src/core/usecases/getAllNotesUseCase/GetAllNotesUseCase.ts
 FN:8,GetAllNotesUseCase
 FN:10,getAllNotes
 FNF:2
@@ -769,7 +769,7 @@ BRF:5
 BRH:5
 end_of_record
 TN:
-SF:src/domain/usecases/getAllNotesUseCase/factories/makeSut.ts
+SF:src/core/usecases/getAllNotesUseCase/factories/makeSut.ts
 FN:3,makeSut
 FNF:1
 FNH:1
@@ -788,7 +788,7 @@ BRF:1
 BRH:1
 end_of_record
 TN:
-SF:src/domain/usecases/getAllNotesUseCase/helper/instanceGetAllNotesUseCase.ts
+SF:src/core/usecases/getAllNotesUseCase/helper/instanceGetAllNotesUseCase.ts
 FN:4,instanceGetAllNotesUseCase
 FNF:1
 FNH:1
@@ -812,7 +812,7 @@ BRF:1
 BRH:1
 end_of_record
 TN:
-SF:src/domain/usecases/saveNotesUseCase/SaveNotesUseCase.ts
+SF:src/core/usecases/saveNotesUseCase/SaveNotesUseCase.ts
 FN:10,SaveNotesUseCase
 FN:12,save
 FNF:2
@@ -876,7 +876,7 @@ BRF:6
 BRH:6
 end_of_record
 TN:
-SF:src/domain/usecases/saveNotesUseCase/factories/makeSut.ts
+SF:src/core/usecases/saveNotesUseCase/factories/makeSut.ts
 FN:3,makeSut
 FNF:1
 FNH:1
@@ -895,7 +895,7 @@ BRF:1
 BRH:1
 end_of_record
 TN:
-SF:src/domain/usecases/saveNotesUseCase/helper/instanceSaveNotesUseCase.ts
+SF:src/core/usecases/saveNotesUseCase/helper/instanceSaveNotesUseCase.ts
 FN:5,instanceSaveNotesUseCase
 FNF:1
 FNH:1

@@ -1,5 +1,5 @@
-import { ProvidedParamsError } from "../../../domain/helpers/errors/saveNotesUseCaseError/ProvidedParamsError";
-import { IChangeStatusNotesToTrashUseCase } from "../../../domain/usecases/changeStatusNotesToTrashUseCase/interfaces/IChangeStatusNotesToTrashUseCase";
+import { ProvidedParamsError } from "../../../core/helpers/errors/saveNotesUseCaseError/ProvidedParamsError";
+import { IChangeStatusNotesToTrashUseCase } from "../../../core/usecases/changeStatusNotesToTrashUseCase/interfaces/IChangeStatusNotesToTrashUseCase";
 import { IHttpRequest } from "../../helpers/http/IHttpRequest";
 import { IHttpResponse } from "../../helpers/http/IHttpResponse";
 import { IController } from "../interfaces/IController";
