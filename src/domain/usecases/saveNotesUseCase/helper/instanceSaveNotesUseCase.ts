@@ -1,4 +1,3 @@
-import { databaseSpy } from "../../../repositories/mocks/repository/helper/instanceDatabaseSpy";
 import { saveNotesRepository } from "../../../repositories/saveNotesRepository/helper/instanceSaveNotesRepository";
 import { updateNotesRepository } from "../../../repositories/updateNotesRepository/helper/instanceUpdateNotesRepository";
 import { SaveNotesUseCase } from "../SaveNotesUseCase";

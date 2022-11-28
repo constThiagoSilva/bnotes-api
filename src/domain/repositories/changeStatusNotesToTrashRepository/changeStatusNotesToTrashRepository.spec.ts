@@ -1,6 +1,4 @@
-import { ChangeStatusNotesToTrashRepository } from "./ChangeStatusNotesToTrashRepository";
 import { Note } from "../../models/Note";
-import { DatabaseSpy } from "../mocks/repository/DatabaseSpy";
 import { saveNotesRepository } from "../saveNotesRepository/helper/instanceSaveNotesRepository";
 import { changeStatusNotesToTrashRepository } from "./helper/instanceChangeStatusNotesToTrashRepository";
 

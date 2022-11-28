@@ -1,8 +1,8 @@
 import { changeStatusNotesToTrashUseCase } from "../../../../domain/usecases/changeStatusNotesToTrashUseCase/helper/instanceChangeStatusNotesToTrashUseCase";
-import { StatusNoteToTrashController } from "../ChangeStatusNotesToTrash";
+import { ChangeStatusNoteToTrashController } from "../ChangeStatusNotesToTrash";
 
 export const instanceStatusNoteToTrashController = () => {
-  const statusNoteToTrashControllert = new StatusNoteToTrashController(
+  const statusNoteToTrashControllert = new ChangeStatusNoteToTrashController(
     changeStatusNotesToTrashUseCase
   );
 

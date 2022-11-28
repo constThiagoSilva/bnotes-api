@@ -4,7 +4,7 @@ import { IHttpRequest } from "../../helpers/http/IHttpRequest";
 import { IHttpResponse } from "../../helpers/http/IHttpResponse";
 import { IController } from "../interfaces/IController";
 
-export class StatusNoteToTrashController implements IController {
+export class ChangeStatusNoteToTrashController implements IController {
   constructor(
     private statusNoteToTrashUseCase: IChangeStatusNotesToTrashUseCase
   ) {}

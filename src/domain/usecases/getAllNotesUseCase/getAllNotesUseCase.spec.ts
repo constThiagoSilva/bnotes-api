@@ -1,5 +1,4 @@
 import { Note } from "../../models/Note";
-import { saveNotesRepository } from "../../repositories/saveNotesRepository/helper/instanceSaveNotesRepository";
 import { saveNotesUseCase } from "../saveNotesUseCase/helper/instanceSaveNotesUseCase";
 import {makeSut} from './factories/makeSut'
 
