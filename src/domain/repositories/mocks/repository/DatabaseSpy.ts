@@ -21,13 +21,9 @@ export class DatabaseSpy implements Database {
 
     this.notes.push(createdNote)
     
-    console.log(this.notes)
-    
     return createdNote
   }
   async changeStatusToTrash(noteId: string): Promise<Note | null> {
-    console.log(this.notes)
-
     const note = this.notes.find((note) => note.id === noteId);
     
     if (!note) {
@@ -42,8 +38,6 @@ export class DatabaseSpy implements Database {
     const notes = this.notes.filter(note => note.author === author)
 
     if (notes.length < 1 || !notes) return null
-
-    console.log('get', this.notes)
     
     return notes
   }
@@ -66,8 +60,6 @@ export class DatabaseSpy implements Database {
     })
 
     this.notes = [...newNotes as Note[]]
-
-    console.log(this.notes)
 
     return updatedNote
   }
