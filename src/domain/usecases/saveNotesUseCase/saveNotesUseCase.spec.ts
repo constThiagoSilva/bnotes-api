@@ -1,12 +1,13 @@
 import { NewNote } from "./interfaces/iNewNote";
 import { UpdateNote } from "./interfaces/IUpdateNote";
 import {makeSut} from './factories/makeSut'
+import { saveNotesRepository } from "../../repositories/saveNotesRepository/helper/instanceSaveNotesRepository";
 
 describe("Save Notes Use Case", () => {
 
   //UNIT
   it("should save a new note", async () => {
-    const { sut, saveNotesRepository } = makeSut();
+    const { sut } = makeSut();
     const aNewNote: NewNote = {
       author: "any_author",
       title: "any_title",
@@ -44,7 +45,7 @@ describe("Save Notes Use Case", () => {
     await sut.save(aNewNote);
 
     const aUpdatedNote: {note: UpdateNote, id: string} = {
-      id: '1',
+      id: '3',
       note: {
 
         author: 'same_author',
