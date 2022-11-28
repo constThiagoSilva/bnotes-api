@@ -1,10 +1,11 @@
 import { Note } from "../../../domain/models/Note";
 import { IHttpRequest } from "../../helpers/http/IHttpRequest";
+import { saveNotesController } from "../saveNotesController/helper/instanceSaveNotesController";
 import {makeSut} from './factories/sutFactory'
 
 describe("Change Status Note to Trash Controller", () => {
   it("should change status notes to trash and return a note in response, with code 200", async () => {
-    const {sut,saveNotesController} = makeSut()
+    const {sut} = makeSut()
     const request: IHttpRequest = {
       body: null,
       params: {
@@ -55,7 +56,7 @@ describe("Change Status Note to Trash Controller", () => {
     const request: IHttpRequest = {
       body: null,
       params: {
-        noteId: "1",
+        noteId: "0",
       },
     };
 
