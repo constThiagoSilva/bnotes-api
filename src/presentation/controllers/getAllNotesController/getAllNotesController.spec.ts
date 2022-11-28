@@ -1,9 +1,10 @@
 import { IHttpRequest } from "../../helpers/http/IHttpRequest";
+import { saveNotesController } from "../saveNotesController/helper/instanceSaveNotesController";
 import {makeSut} from './factories/makeFactory'
 
 describe("Get All Notes Controller", () => {
   it("should return a list of notes in response, with 200 code", async () => {
-    const { sut, saveNotesController } = makeSut();
+    const { sut } = makeSut();
     const request: IHttpRequest = {
       params: {
         author: "any_author",
@@ -67,7 +68,7 @@ describe("Get All Notes Controller", () => {
     const { sut } = makeSut();
     const request: IHttpRequest = {
       params: {
-        author: "any_author",
+        author: "not_exist_author",
       },
       body: null,
     };
