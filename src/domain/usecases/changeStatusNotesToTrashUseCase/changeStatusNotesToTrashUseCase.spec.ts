@@ -1,10 +1,11 @@
 import { Note } from "../../models/Note";
+import { saveNotesRepository } from "../../repositories/saveNotesRepository/helper/instanceSaveNotesRepository";
 import { makeSut } from "./factories/makeSut";
 
 describe("Delete Note Use Case", () => {
   //UNIT
   it("should change the status of note 'Active' to 'Trash'", async () => {
-    const { sut, databaseSpy } = makeSut();
+    const { sut } = makeSut();
     const mockFakeNote: Note = {
       id: "1",
       author: "any_author",
@@ -15,9 +16,9 @@ describe("Delete Note Use Case", () => {
       updateAt: new Date("2020-01-10"),
     };
 
-    const createdNote = await databaseSpy.create(mockFakeNote);
+    const createdNote = await saveNotesRepository.saveNote(mockFakeNote);
     const { trashedNote } = await sut.changeStatusNotesToTrashUseCase(
-      String(createdNote?.id)
+      String(createdNote?.savedNote?.id)
     );
 
     expect(trashedNote?.status).toBe("Trash");
