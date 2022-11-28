@@ -1,5 +1,6 @@
 import { Note } from "../../models/Note";
 import { saveNotesRepository } from "../../repositories/saveNotesRepository/helper/instanceSaveNotesRepository";
+import { saveNotesUseCase } from "../saveNotesUseCase/helper/instanceSaveNotesUseCase";
 import { makeSut } from "./factories/makeSut";
 
 describe("Delete Note Use Case", () => {
@@ -16,9 +17,9 @@ describe("Delete Note Use Case", () => {
       updateAt: new Date("2020-01-10"),
     };
 
-    const createdNote = await saveNotesRepository.saveNote(mockFakeNote);
+    const createdNote = await saveNotesUseCase.save(mockFakeNote);
     const { trashedNote } = await sut.changeStatusNotesToTrashUseCase(
-      String(createdNote?.savedNote?.id)
+      String(createdNote?.note?.id)
     );
 
     expect(trashedNote?.status).toBe("Trash");
