@@ -26,6 +26,42 @@ describe("Save Notes Controller", () => {
 
     expect(response.response.note).toEqual(responseBody);
   });
+  it('should update a existing note', async () => {
+    const sut = makeSut();
+    const requestBodyCreateNote: IHttpRequest = {
+      body: {
+        author: "same_author",
+        title: "any_title",
+        content: "any_content",
+      },
+      params: null
+    };
+    const requestBodyUpdateExistingNote: IHttpRequest = {
+      body: {
+        author: "same_author",
+        title: "other_title",
+        content: "other_content",
+      },
+      params: {
+        noteId: '1'
+      }
+    }
+    const responseBody = {
+      id: "1",
+      author: "same_author",
+      title: "other_title",
+      content: "other_content",
+      updateAt: new Date("2022-10-31"),
+      createAt: new Date("2022-10-31"),
+      status: "Active",
+    };
+
+    const createNote = await sut.route(requestBodyCreateNote);
+    const response = await sut.route(requestBodyUpdateExistingNote);
+
+    expect(response.response).toEqual(requestBodyUpdateExistingNote)
+
+  })
 
   it("should return error 500 if author is not provided, and error with message: parameter: author, not provided", async () => {
     const sut = makeSut();
