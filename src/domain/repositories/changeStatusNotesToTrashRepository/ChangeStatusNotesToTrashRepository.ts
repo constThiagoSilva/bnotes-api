@@ -1,7 +1,6 @@
 import { IError } from "../../helpers/errors/saveNotesUseCaseError/interfaces/IError";
 import { ProvidedParamsError } from "../../helpers/errors/saveNotesUseCaseError/ProvidedParamsError";
 import { Note } from "../../models/Note";
-import { DatabaseSpy } from "../mocks/repository/DatabaseSpy";
 import { Database } from "../mocks/repository/interfaces/Database";
 import { IChangeStatusNotesToTrashRepository } from "./interfaces/IChangeStatusNotesToTrashRepository";
 
