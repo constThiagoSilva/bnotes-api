@@ -3,9 +3,9 @@ import { DatabaseSpy } from "./domain/repositories/mocks/repository/DatabaseSpy"
 import { statusNoteToTrashControllert } from "./presentation/controllers/changeStatusNotesToTrashController/helper/instanceChangeStatusNotesToTrashController";
 import { getAllNotesController } from "./presentation/controllers/getAllNotesController/helper/instanceGetAllNotesController";
 import { saveNotesController } from "./presentation/controllers/saveNotesController/helper/instanceSaveNotesController";
+import { router } from "./presentation/routes/router";
 
 const app = express();
-const router = Router();
 
 app.use(express.json());
 
