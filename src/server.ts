@@ -15,6 +15,11 @@ router.post("/notes/save", async (request, response) => {
 
   return response.status(result.code).json(result.response)
 });
+router.put('/notes/save/:noteId', async (request, response) => {
+  const result = await saveNotesController.route(request)
+
+  return response.status(result.code).json(result.response)
+})
 router.get('/notes/all/:author', async (request, response) => {
   const result = await getAllNotesController.route(request)
 
