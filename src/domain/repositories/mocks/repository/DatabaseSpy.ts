@@ -42,6 +42,8 @@ export class DatabaseSpy implements Database {
     const notes = this.notes.filter(note => note.author === author)
 
     if (notes.length < 1 || !notes) return null
+
+    console.log('get', this.notes)
     
     return notes
   }
@@ -58,10 +60,14 @@ export class DatabaseSpy implements Database {
           ...note,
           content: oldNote.content, title: oldNote.title
         } as Note
+      } else {
+        return note
       }
     })
 
     this.notes = [...newNotes as Note[]]
+
+    console.log(this.notes)
 
     return updatedNote
   }
