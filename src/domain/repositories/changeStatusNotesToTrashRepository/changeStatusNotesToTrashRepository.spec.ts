@@ -1,11 +1,12 @@
 import { ChangeStatusNotesToTrashRepository } from "./ChangeStatusNotesToTrashRepository";
 import { Note } from "../../models/Note";
 import { DatabaseSpy } from "../mocks/repository/DatabaseSpy";
+import { saveNotesRepository } from "../saveNotesRepository/helper/instanceSaveNotesRepository";
+import { changeStatusNotesToTrashRepository } from "./helper/instanceChangeStatusNotesToTrashRepository";
 
 describe("Change Status Notes To Trash Repository", () => {
   it("should change status note to trash with id", async () => {
-    const databaseSpy = new DatabaseSpy();
-    const sut = new ChangeStatusNotesToTrashRepository(databaseSpy);
+    const sut = changeStatusNotesToTrashRepository;
     const mockFakeNote: Note = {
       id: "1",
       author: "any_author",
@@ -16,16 +17,15 @@ describe("Change Status Notes To Trash Repository", () => {
       updateAt: new Date("2020-01-10"),
     };
 
-    const createdNote = await databaseSpy.create(mockFakeNote);
+    const {savedNote} = await saveNotesRepository.saveNote(mockFakeNote);
     const { trashedNote } = await sut.changeStatusToTrash(
-      String(createdNote?.id)
+      String(savedNote?.id)
     );
 
     expect(trashedNote?.status).toBe("Trash");
   });
   it("should return 500 if noteId not provided", async () => {
-    const databaseSpy = new DatabaseSpy();
-    const sut = new ChangeStatusNotesToTrashRepository(databaseSpy);
+    const sut = changeStatusNotesToTrashRepository;
 
     const { error } = await sut.changeStatusToTrash("");
 
@@ -33,8 +33,7 @@ describe("Change Status Notes To Trash Repository", () => {
     expect(error?.message.message).toBe("parameter: noteId, not provided");
   });
   it("should an error with message: note not exists, if note-id provided not exist", async () => {
-    const databaseSpy = new DatabaseSpy();
-    const sut = new ChangeStatusNotesToTrashRepository(databaseSpy);
+    const sut = changeStatusNotesToTrashRepository;
     const mockNotExistingNoteId = "not_exists_note_id";
 
     const { error } = await sut.changeStatusToTrash(mockNotExistingNoteId);

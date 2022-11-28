@@ -21,9 +21,13 @@ export class DatabaseSpy implements Database {
 
     this.notes.push(createdNote)
     
+    console.log(this.notes)
+    
     return createdNote
   }
   async changeStatusToTrash(noteId: string): Promise<Note | null> {
+    console.log(this.notes)
+
     const note = this.notes.find((note) => note.id === noteId);
     
     if (!note) {

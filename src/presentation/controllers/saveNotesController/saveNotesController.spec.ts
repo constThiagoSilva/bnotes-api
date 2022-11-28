@@ -27,47 +27,47 @@ describe("Save Notes Controller", () => {
 
     expect(response.response.note).toEqual(responseBody);
   });
-  it("should update an existig note", async () => {
-    const sut = makeSut();
-    const createNote: IHttpRequest = {
-      body: {
-        author: "any_author",
-        title: "any_title",
-        content: "any_content",
-      },
-      params: null,
-    };
-    const updateNote: IHttpRequest = {
-      body: {
-        author: "any_author",
-        title: "other_title",
-        content: "other_content",
-      },
-      params: {
-        noteId: "1",
-      },
-    };
-    const responseBody: IHttpResponse = {
-      code: 200,
-      error: null,
-      response: {
-        noteId: {
-          id: "1",
-          author: "any_author",
-          title: "other_title",
-          content: "other_content",
-          updateAt: new Date("2022-10-31"),
-          createAt: new Date("2022-10-31"),
-          status: "Active",
-        },
-      },
-    };
+  // it("should update an existig note", async () => {
+  //   const sut = makeSut();
+  //   const createNote: IHttpRequest = {
+  //     body: {
+  //       author: "any_author",
+  //       title: "any_title",
+  //       content: "any_content",
+  //     },
+  //     params: null,
+  //   };
+  //   const updateNote: IHttpRequest = {
+  //     body: {
+  //       author: "any_author",
+  //       title: "other_title",
+  //       content: "other_content",
+  //     },
+  //     params: {
+  //       noteId: "1",
+  //     },
+  //   };
+  //   const responseBody: IHttpResponse = {
+  //     code: 200,
+  //     error: null,
+  //     response: {
+  //       noteId: {
+  //         id: "1",
+  //         author: "any_author",
+  //         title: "other_title",
+  //         content: "other_content",
+  //         updateAt: new Date("2022-10-31"),
+  //         createAt: new Date("2022-10-31"),
+  //         status: "Active",
+  //       },
+  //     },
+  //   };
 
-    await sut.route(createNote);
-    const response = await sut.route(updateNote);
+  //   await sut.route(createNote);
+  //   const response = await sut.route(updateNote);
 
-    expect(response.response).toEqual(responseBody)
-  });
+  //   expect(response.response).toEqual(responseBody)
+  // });
 
   it("should return error 500 if author is not provided, and error with message: parameter: author, not provided", async () => {
     const sut = makeSut();
