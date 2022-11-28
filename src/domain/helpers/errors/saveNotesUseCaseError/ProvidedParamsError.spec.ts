@@ -1,4 +1,4 @@
-import { ProvidedParamsError } from "./ProviedParamsError"
+import { ProvidedParamsError } from "./ProvidedParamsError"
 
 describe('ProvidedParamsError Class Error', () => {
     it('should throw an error', () => {

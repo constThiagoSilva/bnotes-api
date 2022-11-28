@@ -1,5 +1,5 @@
 import { IError } from "../../helpers/errors/saveNotesUseCaseError/interfaces/IError";
-import { ProvidedParamsError } from "../../helpers/errors/saveNotesUseCaseError/ProviedParamsError";
+import { ProvidedParamsError } from "../../helpers/errors/saveNotesUseCaseError/ProvidedParamsError";
 import { Note } from "../../models/Note";
 import { NewNote } from "../../usecases/saveNotesUseCase/interfaces/iNewNote";
 import { Database } from "../mocks/repository/interfaces/Database";

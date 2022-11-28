@@ -1,4 +1,4 @@
-import { ProvidedParamsError } from "../ProviedParamsError";
+import { ProvidedParamsError } from "../ProvidedParamsError";
 
 export interface IError {
     code: number;

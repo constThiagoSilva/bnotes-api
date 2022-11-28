@@ -1,5 +1,5 @@
 TN:
-SF:src/domain/helpers/errors/saveNotesUseCaseError/ProviedParamsError.ts
+SF:src/domain/helpers/errors/saveNotesUseCaseError/ProvidedParamsError.ts
 FN:2,ProvidedParamsError
 FNF:1
 FNH:1

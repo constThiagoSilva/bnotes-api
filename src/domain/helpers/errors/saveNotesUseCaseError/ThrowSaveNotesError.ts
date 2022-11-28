@@ -1,6 +1,6 @@
 import { NewNote } from "../../../usecases/saveNotesUseCase/interfaces/iNewNote";
 import { IError } from "./interfaces/IError";
-import { ProvidedParamsError } from "./ProviedParamsError";
+import { ProvidedParamsError } from "./ProvidedParamsError";
 
 export const ThrowSaveNotesError = (newNote: NewNote): IError | null => {
   if (!newNote.author) {

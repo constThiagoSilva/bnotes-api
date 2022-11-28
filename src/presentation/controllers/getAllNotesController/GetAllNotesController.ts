@@ -1,4 +1,4 @@
-import { ProvidedParamsError } from "../../../domain/helpers/errors/saveNotesUseCaseError/ProviedParamsError";
+import { ProvidedParamsError } from "../../../domain/helpers/errors/saveNotesUseCaseError/ProvidedParamsError";
 import { IGetAllNotesUseCase } from "../../../domain/usecases/getAllNotesUseCase/interfaces/IGetAllNotesUseCase";
 import { IHttpRequest } from "../../helpers/http/IHttpRequest";
 import { IHttpResponse } from "../../helpers/http/IHttpResponse";

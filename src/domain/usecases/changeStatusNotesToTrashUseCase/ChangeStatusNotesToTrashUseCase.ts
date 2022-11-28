@@ -1,5 +1,5 @@
 import { IError } from "../../helpers/errors/saveNotesUseCaseError/interfaces/IError";
-import { ProvidedParamsError } from "../../helpers/errors/saveNotesUseCaseError/ProviedParamsError";
+import { ProvidedParamsError } from "../../helpers/errors/saveNotesUseCaseError/ProvidedParamsError";
 import { Note } from "../../models/Note";
 import { IChangeStatusNotesToTrashRepository } from "../../repositories/changeStatusNotesToTrashRepository/interfaces/IChangeStatusNotesToTrashRepository";
 import { IChangeStatusNotesToTrashUseCase } from "./interfaces/IChangeStatusNotesToTrashUseCase";

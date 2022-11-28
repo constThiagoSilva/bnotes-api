@@ -2,7 +2,7 @@ import { IGetAllNotesRepository } from "./interfaces/IGetAllNotesRepository";
 import { Database } from "../mocks/repository/interfaces/Database";
 import { Note } from "../../models/Note";
 import { IError } from "../../helpers/errors/saveNotesUseCaseError/interfaces/IError";
-import { ProvidedParamsError } from "../../helpers/errors/saveNotesUseCaseError/ProviedParamsError";
+import { ProvidedParamsError } from "../../helpers/errors/saveNotesUseCaseError/ProvidedParamsError";
 
 export class GetAllNotesRepository implements IGetAllNotesRepository {
   constructor(private database: Database) {}
