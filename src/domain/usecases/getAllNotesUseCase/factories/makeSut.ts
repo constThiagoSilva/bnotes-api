@@ -1,11 +1,7 @@
-import { GetAllNotesRepository } from "../../../repositories/getAllNotesRepository/GetAllNotesRepository";
-import { DatabaseSpy } from "../../../repositories/mocks/repository/DatabaseSpy";
-import { GetAllNotesUseCase } from "../GetAllNotesUseCase";
+import { getAllNotesUseCase } from "../helper/instanceGetAllNotesUseCase";
 
 export const makeSut = () => {
-    const databaseSpy = new DatabaseSpy()
-    const getAllNotesRepository = new GetAllNotesRepository(databaseSpy);
-    const sut = new GetAllNotesUseCase(getAllNotesRepository);
+    const sut = getAllNotesUseCase;
   
-    return { sut, getAllNotesRepository, databaseSpy };
+    return { sut };
   };
