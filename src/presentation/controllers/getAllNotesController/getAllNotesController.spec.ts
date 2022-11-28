@@ -17,7 +17,7 @@ describe("Get All Notes Controller", () => {
         title: "any_title",
         content: "any_content",
       },
-      params: null,
+      params: {},
     };
     const responseResult = [
       {
@@ -52,9 +52,7 @@ describe("Get All Notes Controller", () => {
     const { sut } = makeSut();
     const request: IHttpRequest = {
       body: null,
-      params: {
-        author: null,
-      },
+      params: {},
     };
 
     const response = await sut.route(request);

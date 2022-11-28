@@ -18,7 +18,7 @@ describe("Change Status Note to Trash Controller", () => {
           title: "any_title",
           content: "any_content",
         },
-        params: null,
+        params: {},
       };
     const responseResult: Note = {
       id: "1",
