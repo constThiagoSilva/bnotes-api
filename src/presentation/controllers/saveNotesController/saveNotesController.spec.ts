@@ -1,5 +1,6 @@
-import { IHttpRequest } from '../../helpers/http/IHttpRequest';
-import {makeSut} from './factories/sutFactory'
+import { IHttpRequest } from "../../helpers/http/IHttpRequest";
+import { IHttpResponse } from "../../helpers/http/IHttpResponse";
+import { makeSut } from "./factories/sutFactory";
 
 describe("Save Notes Controller", () => {
   it("should return a created note in response, with 200 code", async () => {
@@ -10,7 +11,7 @@ describe("Save Notes Controller", () => {
         title: "any_title",
         content: "any_content",
       },
-      params: null
+      params: null,
     };
     const responseBody = {
       id: "1",
@@ -26,42 +27,47 @@ describe("Save Notes Controller", () => {
 
     expect(response.response.note).toEqual(responseBody);
   });
-  it('should update a existing note', async () => {
+  it("should update an existig note", async () => {
     const sut = makeSut();
-    const requestBodyCreateNote: IHttpRequest = {
+    const createNote: IHttpRequest = {
       body: {
-        author: "same_author",
+        author: "any_author",
         title: "any_title",
         content: "any_content",
       },
-      params: null
+      params: null,
     };
-    const requestBodyUpdateExistingNote: IHttpRequest = {
+    const updateNote: IHttpRequest = {
       body: {
-        author: "same_author",
+        author: "any_author",
         title: "other_title",
         content: "other_content",
       },
       params: {
-        noteId: '1'
-      }
-    }
-    const responseBody = {
-      id: "1",
-      author: "same_author",
-      title: "other_title",
-      content: "other_content",
-      updateAt: new Date("2022-10-31"),
-      createAt: new Date("2022-10-31"),
-      status: "Active",
+        noteId: "1",
+      },
+    };
+    const responseBody: IHttpResponse = {
+      code: 200,
+      error: null,
+      response: {
+        noteId: {
+          id: "1",
+          author: "any_author",
+          title: "other_title",
+          content: "other_content",
+          updateAt: new Date("2022-10-31"),
+          createAt: new Date("2022-10-31"),
+          status: "Active",
+        },
+      },
     };
 
-    const createNote = await sut.route(requestBodyCreateNote);
-    const response = await sut.route(requestBodyUpdateExistingNote);
+    await sut.route(createNote);
+    const response = await sut.route(updateNote);
 
-    expect(response.response).toEqual(requestBodyUpdateExistingNote)
-
-  })
+    expect(response.response).toEqual(responseBody)
+  });
 
   it("should return error 500 if author is not provided, and error with message: parameter: author, not provided", async () => {
     const sut = makeSut();
@@ -71,7 +77,7 @@ describe("Save Notes Controller", () => {
         title: "any_title",
         content: "any_content",
       },
-      params: null
+      params: null,
     };
 
     const response = await sut.route(requestBody);
@@ -89,7 +95,7 @@ describe("Save Notes Controller", () => {
         title: "",
         content: "any_content",
       },
-      params: null
+      params: null,
     };
 
     const response = await sut.route(requestBody);
@@ -107,7 +113,7 @@ describe("Save Notes Controller", () => {
         title: "any_title",
         content: "",
       },
-      params: null
+      params: null,
     };
 
     const response = await sut.route(requestBody);
