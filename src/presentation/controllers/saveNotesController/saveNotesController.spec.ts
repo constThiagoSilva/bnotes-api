@@ -1,10 +1,9 @@
 import { IHttpRequest } from "../../helpers/http/IHttpRequest";
-import { IHttpResponse } from "../../helpers/http/IHttpResponse";
 import { makeSut } from "./factories/sutFactory";
 
 describe("Save Notes Controller", () => {
   it("should return a created note in response, with 200 code", async () => {
-    const sut = makeSut();
+    const {sut} = makeSut();
     const requestBody: IHttpRequest = {
       body: {
         author: "any_author",
@@ -70,7 +69,7 @@ describe("Save Notes Controller", () => {
   // });
 
   it("should return error 500 if author is not provided, and error with message: parameter: author, not provided", async () => {
-    const sut = makeSut();
+    const {sut} = makeSut();
     const requestBody: IHttpRequest = {
       body: {
         author: "",
@@ -88,7 +87,7 @@ describe("Save Notes Controller", () => {
     );
   });
   it("should return error 500 if title is not provided, and error with message: parameter: author, not provided", async () => {
-    const sut = makeSut();
+    const {sut} = makeSut();
     const requestBody: IHttpRequest = {
       body: {
         author: "any_author",
@@ -106,7 +105,7 @@ describe("Save Notes Controller", () => {
     );
   });
   it("should return error 500 if content is not provided, and error with message: parameter: author, not provided", async () => {
-    const sut = makeSut();
+    const {sut} = makeSut();
     const requestBody: IHttpRequest = {
       body: {
         author: "any_author",
