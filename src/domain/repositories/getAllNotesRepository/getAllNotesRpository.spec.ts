@@ -1,32 +1,34 @@
 import { Note } from "../../models/Note";
+import { saveNotesRepository } from "../saveNotesRepository/helper/instanceSaveNotesRepository";
 import {makeSut} from './factories/makeSut'
 
 describe("Get All Notes Repository", () => {
   it("should return all notes of author", async () => {
-    const {sut, databaseSpy} = makeSut()
+    const {sut} = makeSut()
     const insertNewNotesToMock: Note[] = [
         {
-          id: "3",
+          id: "1",
           author: "correct_author",
           content: "any_content",
           title: "any_title",
           status: "Active",
-          createAt: new Date("2020-01-10"),
-          updateAt: new Date("2020-01-10"),
+          createAt: new Date("2022-10-31"),
+          updateAt: new Date("2022-10-31"),
         },
         {
-          id: "4",
+          id: "2",
           author: "correct_author",
           content: "any_content",
           title: "any_title",
           status: "Active",
-          createAt: new Date("2020-01-10"),
-          updateAt: new Date("2020-01-10"),
+          createAt: new Date("2022-10-31"),
+          updateAt: new Date("2022-10-31"),
         },
       ]
     const author = "correct_author";
 
-    databaseSpy.setNotes(insertNewNotesToMock);
+    await saveNotesRepository.saveNote(insertNewNotesToMock[0]);
+    await saveNotesRepository.saveNote(insertNewNotesToMock[1]);
     const { notes } = await sut.getAllNotes(author);
 
     expect(notes?.length).toBeGreaterThan(0);

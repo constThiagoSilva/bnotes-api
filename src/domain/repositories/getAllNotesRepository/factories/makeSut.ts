@@ -1,9 +1,9 @@
 import { DatabaseSpy } from "../../mocks/repository/DatabaseSpy";
 import { GetAllNotesRepository } from "../GetAllNotesRepository";
+import { getAllNotesRepository } from "../helper/instanceGetAllNotesRepository";
 
 export const makeSut = () => {
-  const databaseSpy = new DatabaseSpy();
-  const sut = new GetAllNotesRepository(databaseSpy);
+  const sut = getAllNotesRepository;
 
-  return { sut, databaseSpy };
+  return { sut };
 };
